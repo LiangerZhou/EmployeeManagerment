@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<!-- 开发模式下使用，可以打印出更详细的错误信息  -->
+	<constant name="struts.devMode" value="true"/>
+	<!-- 告知struts2运行时使用spring来创建对象 --> 
+	<constant name="struts.objectFactory" value="spring"/>
+	
+	<!-- 这个class只需填写applicationContext.xml里配置的名字就好，因为有spring来管理action了 -->
+	<package name="ssh" extends="struts-default" namespace="/">
+		
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="input">index.jsp</result>
+			<result name="success" type="dispatcher">frame.jsp</result>
+			<allowed-methods>login</allowed-methods>
+		</action>
+		
+		<action name="employee_*" class="employeeAction" method="{1}">
+			<result name="findAll">/frame/listEmployee.jsp</result>
+			<result name="attend">/frame/attendance.jsp</result>
+			<result name="saveUI">/frame/addEmployee.jsp</result>
+			<result name="saveSuccess" type="redirect">employee_findAll.action</result>
+			<result name="editSuccess">/frame/editEmployee.jsp</result>
+			<result name="updateSuccess" type="redirect">employee_findAll.action</result>
+			<result name="deleteSuccess" type="redirect">employee_findAll.action</result>
+			<result name="findone">/frame/attendance.jsp</result>
+			<result name="exportSuccess"></result>
+<!-- 			<result name="exportSuccess" type = "stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">excelStream</param>  
+	            <param name="contentDisposition">attachment;filename="${fileName}"</param>  
+	            <param name="bufferSize">1024</param> 
+			</result> -->
+			<allowed-methods>findAll,saveUI,save,edit,update,delete,exportExcel,findById,findByName,attend</allowed-methods><!-- struts2.5才要加 -->
+		</action>
+		
+		<action name="company_*" class="companyAction" method="{1}">
+			<result name="findAll">/frame/listCompany.jsp</result>
+			<result name="saveUI">/frame/addCompany.jsp</result>
+			<result name="saveSuccess" type="redirectAction">company_findAll.action</result>
+			<result name="editSuccess">/frame/editCompany.jsp</result>
+			<result name="updateSuccess" type="redirect">company_findAll.action</result>
+			<result name="deleteSuccess" type="redirect">company_findAll.action</result>
+			<result name="exportSuccess" type = "stream">
+				<param name="contentType">application/vnd.ms-excel</param>
+				<param name="inputName">excelStream</param>  
+	            <param name="contentDisposition">attachment;filename="${fileName}"</param>  
+	            <param name="bufferSize">1024</param> 
+			</result>
+			<allowed-methods>findAll,saveUI,saveInfo,editById,update,delete,exportExcel</allowed-methods><!-- struts2.5才要加 -->
+		</action>
+		
+		<action name="project_*" class="projectAction" method="{1}">
+			<result name="saveUI">/frame/addProject.jsp</result>
+			<result name="findAll">/frame/listProject.jsp</result>
+			<result name="addSuccess" type="redirectAction">project_findAll.action</result>
+			<result name="saveSuccess" type="redirect">project_findAll.action</result>
+			<result name="editSuccess">/frame/editProject.jsp</result>
+			<result name="updateSuccess" type="redirect">project_findAll.action</result>
+			<result name="delSuccess" type="redirect">project_findAll.action</result>
+			<allowed-methods>saveUI,findAll,addProj,editProj,updateProj,delProj</allowed-methods><!-- struts2.5才要加 -->
+		</action>
+		
+	</package>   		
+</struts>
