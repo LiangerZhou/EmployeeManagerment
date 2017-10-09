@@ -22,11 +22,13 @@ public class Company implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer cid; //id
 	private String cname; //公司名称
-	private String cdesc; //公司描述
+	private String cdesc; //公司备注
+	private String contract_name;//合同名称
+	private String contract_code;//合同编号
 	
 	//外援的集合
 	private Set<Employee> employees = new HashSet<Employee>();
-	//项目的集合
+	//项目任务的集合
 	private Set<Project> projects = new HashSet<Project>();
 
 	public Integer getCid() {
@@ -68,6 +70,21 @@ public class Company implements Serializable{
 	public void setProjects(Set<Project> projects) {
 		this.projects = projects;
 	}
-	
+
+	public String getContract_name() {
+		return contract_name;
+	}
+
+	public void setContract_name(String contract_name) {
+		this.contract_name = contract_name;
+	}
+
+	public String getContract_code() {
+		return contract_code;
+	}
+
+	public void setContract_code(String contract_code) {
+		this.contract_code = contract_code;
+	}
 	
 }

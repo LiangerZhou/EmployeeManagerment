@@ -29,8 +29,16 @@
 				<td><s:textfield name="cname" /></td>
 			</tr>
 			<tr>
-				<td>公司介绍：</td>
-				<td><s:textarea rows="5" cols="50" name="cdesc"></s:textarea></td>
+				<td>合同名称：</td>
+				<td><s:textfield rows="5" cols="50" name="contract_name"></s:textfield></td>
+			</tr>
+			<tr>
+				<td>合同编号：</td>
+				<td><s:textfield rows="5" cols="50" name="contract_code"></s:textfield></td>
+			</tr>
+			<tr>
+				<td>备注：</td>
+				<td><s:textfield rows="5" cols="50" name="cdesc"></s:textfield></td>
 			</tr>
 		</table>
 	</s:form>

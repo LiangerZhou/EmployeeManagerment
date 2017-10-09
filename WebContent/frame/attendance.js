@@ -15,11 +15,11 @@
     }); 
      //单选框
       $("input[name='ckb']").bind("click",function(){
-           if($("input[name='ckb']:not(:checked)").length != 0){//读取未选中的个数，选中的是input[name='ckb']:checked
-               $("#ckb_head").checked = false;
-           }else{
-               $("input[name='ckb_head']").attr("checked",true);
-         }
+    	  if($("input[name='ckb']:not(:checked)").length != 0){//读取未选中的个数，选中的是input[name='ckb']:checked
+    		  document.getElementById("ckb_head").checked=false;
+    	  }else{
+    		  document.getElementById("ckb_head").checked=true;
+    	  }
        });
     });
     
@@ -49,13 +49,13 @@
 	  });
 	}
  
-    //获取所有的工作日（未实现法定节假日剔除）
+    //获取所有的工作日（未实现法定节假日剔除） 
     function getAll(begin, end) {  
         var ab = begin.split("-");  
         var ae = end.split("-");  
         var db = new Date();  
         db.setUTCFullYear(ab[0], ab[1] - 1, ab[2]);  
-        var de = new Date();  
+        var de = new Date();   
         de.setUTCFullYear(ae[0], ae[1] - 1, ae[2]);  
         var unixDb = db.getTime();  
         var unixDe = de.getTime();  

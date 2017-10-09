@@ -8,12 +8,10 @@
 		<id name="proj_id" column="proj_id">
 			<generator class="native" />
 		</id>
+		
 		<property name="proj_name" length="50" column="proj_name"></property>
 		<property name="proj_creTime"  length="50" column="proj_creTime"></property>
 		<property name="proj_endTime"  length="50" column="proj_endTime"></property>
-		<property name="contract_name" length="50" column="contract_name" ></property>
-		<property name="contract_code" length="50" column="contract_code" ></property>
-		<property name="demand_side" length="50" column="demand_side"></property>
 		<property name="qm_side" length="50" column="qm_side"></property>
 		<property name="charge_man" length="50" column="charge_man"></property>
 		<property name="workType" length="50" column="workType"></property>

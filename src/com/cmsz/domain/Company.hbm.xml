@@ -11,11 +11,13 @@
     		
     		<property name="cname" column="cname" length="20"/>
     		<property name="cdesc" column="cdesc" length="100"/>
+    		<property name="contract_name" column="contract_name" length="200"></property>
+			<property name="contract_code" column="contract_code" length="200"></property>
     		
     		<!-- 关联关系映射 -->
     		<set name="employees">
     			<key column="dno"></key>
-    			<one-to-many class="com.cmsz.domain.Employee"></one-to-many> 
+    			<one-to-many class="com.cmsz.domain.Employee"></one-to-many>
     		</set>
     		<!-- 关联关系映射 -->
 			<set name="projects">

@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <table border="0" width="600px">
 <tr>
-<td align="center" style="font-size:24px; color:#666"> 公司编辑 </td>
+<td align="center" style="font-size:24px; color:#666">厂商编辑 </td>
 </tr>
 <tr>
 <td align="right" > 
@@ -26,19 +26,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <s:hidden name="cid" value="%{model.cid}"></s:hidden>
 	<table style="font-size: 16px">
 		<tr>
-		  <td>公司名称：</td>
+		  <td>厂商名称：</td>
 		  <td><s:textfield name="cname" value="%{model.cname}"/></td>
 		</tr>
 		<tr>
-		  <td>公司介绍：</td>
-		  <td></td>
+		  <td>合同名称：</td>
+		  <td><s:textfield rows="5" cols="50" name="contract_name" value="%{model.contract_name}"/></td>
 		</tr>
 		<tr>
-		  <td width="10%"></td>
+		  <td>合同编号：</td>
 		  <td>
-		     <s:textarea rows="5" cols="50" name="cdesc" value="%{model.cdesc}"></s:textarea>
+		     <s:textfield rows="5" cols="50" name="contract_code" value="%{model.contract_code}"></s:textfield>
 		  </td>
 		</tr>
+		<tr>
+		  <td>备注：</td>
+		  <td>
+			<s:textfield rows="5" cols="50" name="cdesc" value="%{model.cdesc}"></s:textfield>
+		  </td>
+		</tr>
+		
 	</table>
 </s:form>
 </body>

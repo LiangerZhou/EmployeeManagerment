@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.cmsz.domain.Task_Assessment" table="task_assessment">
+		<id name="assessment_id" column="assessment_id">
+			<generator class="native" />
+		</id>
+		
+		<property name="task_name" length="50" column="task_name"></property>
+		<property name="start_Date"  length="50" column="start_Date"></property>
+		<property name="end_Date"  length="50" column="end_Date"></property>
+		<property name="workdays" length="50" column="workdays"></property>
+		<property name="work_efficiency" length="50" column="work_efficiency"></property>
+		<property name="work_quality" length="50" column="work_quality"></property>
+		<property name="work_norm" length="50" column="work_norm"></property>
+		<property name="work_score" length="50" column="work_score"></property>
+		<property name="convert_work_score" length="50" column="convert_work_score"></property>
+		<property name="qc_man" length="50" column="qc_man"></property>
+		<property name="remark" length="50" column="remark"></property>
+		
+		
+		<!-- 关联关系映射 -->
+    	<many-to-one name="company"  lazy="false" fetch="join" class="com.cmsz.domain.Company" column="tcno"></many-to-one> 
+    	
+	</class>
+</hibernate-mapping>

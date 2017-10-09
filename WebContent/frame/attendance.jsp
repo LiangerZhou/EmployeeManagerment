@@ -61,7 +61,7 @@ thead {
 	<table cellspacing="0" border="1" class="table1">
 		<thead>
 			<tr style="background: #CCCCCC;text-align: center;">
-			<th style="width: 5%;height: 10px;"><input type="checkbox"  id="ckb_head"/></th>
+			<th style="width: 5%;height: 10px;"><input type="checkbox" name="ckb_head" id="ckb_head"/></th>
 				<th width="10%">员工姓名</th>
 				<th width="10%">外援等级</th>
 				<th width="35%">所属公司</th>

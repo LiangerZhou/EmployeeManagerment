@@ -41,7 +41,7 @@ public class PoiExcel {
 
 				HSSFRow row3 = sheet.getRow((short) 2);
 				HSSFCell r3c1 = row3.getCell((short) 0);
-				r3c1.setCellValue("归属预算名称：" + elist.getProject().getContract_name());
+				r3c1.setCellValue("归属预算名称：" + elist.getCompany().getContract_name());
 
 				for (int i = 4; i < workArray.length + 4; i++) {
 					HSSFRow row = sheet.getRow((short) i);//获取第i+1行

@@ -33,7 +33,7 @@ public class Employee implements Serializable{
 	//所属公司
 	private Company company;
 	
-	//所属项目
+	//所属项目任务
 	private Project project;
 
 	public Company getCompany() {
