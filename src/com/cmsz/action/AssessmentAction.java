@@ -1,14 +1,17 @@
 package com.cmsz.action;
 
 import com.cmsz.domain.Task_Assessment;
+import com.cmsz.service.AssessmentService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 @SuppressWarnings("serial")
 public class AssessmentAction extends ActionSupport implements ModelDriven<Task_Assessment>{
 
-	private Task_Assessment Task_Assessment;
+	private Task_Assessment Task_Assessment = new Task_Assessment();
 	
+	public void setAssessmentService(AssessmentService assessmentService) {
+	}
 	@Override
 	public Task_Assessment getModel() {
 		return Task_Assessment;
