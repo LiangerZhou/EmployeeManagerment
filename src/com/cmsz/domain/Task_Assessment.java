@@ -3,17 +3,20 @@ package com.cmsz.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "assessment")
 public class Task_Assessment implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private String assessment_id;
 	private String task_name;//工作任务摘要
 	private Date start_Date;//工作开始时间
-	private Date end_Date;//工作结束时间
+	private Date end_Date;//计划完成时间
+	private Date real_end_Date;//实际完成时间
 	private Integer workdays;//工作量
 	private Integer work_efficiency;//工作效率，总分30分
 	private Integer work_quality;//工作质量，总分40分
@@ -55,6 +58,14 @@ public class Task_Assessment implements Serializable{
 
 	public void setEnd_Date(Date end_Date) {
 		this.end_Date = end_Date;
+	}
+
+	public Date getReal_end_Date() {
+		return real_end_Date;
+	}
+
+	public void setReal_end_Date(Date real_end_Date) {
+		this.real_end_Date = real_end_Date;
 	}
 
 	public Integer getWorkdays() {

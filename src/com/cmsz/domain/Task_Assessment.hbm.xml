@@ -10,16 +10,17 @@
 		</id>
 		
 		<property name="task_name" length="50" column="task_name"></property>
-		<property name="start_Date"  length="50" column="start_Date"></property>
-		<property name="end_Date"  length="50" column="end_Date"></property>
-		<property name="workdays" length="50" column="workdays"></property>
-		<property name="work_efficiency" length="50" column="work_efficiency"></property>
-		<property name="work_quality" length="50" column="work_quality"></property>
-		<property name="work_norm" length="50" column="work_norm"></property>
-		<property name="work_score" length="50" column="work_score"></property>
-		<property name="convert_work_score" length="50" column="convert_work_score"></property>
+		<property name="start_Date"  length="10" column="start_Date"></property>
+		<property name="end_Date"  length="10" column="end_Date"></property>
+		<property name="real_end_Date"  length="10" column="real_end_Date"></property>
+		<property name="workdays" length="4" column="workdays"></property>
+		<property name="work_efficiency" length="10" column="work_efficiency"></property>
+		<property name="work_quality" length="10" column="work_quality"></property>
+		<property name="work_norm" length="10" column="work_norm"></property>
+		<property name="work_score" length="10" column="work_score"></property>
+		<property name="convert_work_score" length="10" column="convert_work_score"></property>
 		<property name="qc_man" length="50" column="qc_man"></property>
-		<property name="remark" length="50" column="remark"></property>
+		<property name="remark" length="100" column="remark"></property>
 		
 		
 		<!-- 关联关系映射 -->

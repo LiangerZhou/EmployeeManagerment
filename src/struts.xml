@@ -64,5 +64,10 @@
 			<allowed-methods>saveUI,findAll,addProj,editProj,updateProj,delProj</allowed-methods><!-- struts2.5才要加 -->
 		</action>
 		
+		<action name="assessment_*" class="assessmentAction" method="{1}">
+			<result name="saveUI">/frame/addAssessment.jsp</result>
+			<result name="find">/frame/assessment.jsp</result>
+			<allowed-methods>saveUI,find,add,del,edit</allowed-methods>
+		</action>
 	</package>   		
 </struts>

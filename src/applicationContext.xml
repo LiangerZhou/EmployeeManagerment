@@ -53,7 +53,7 @@
 			<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
 		
-			<!-- 配置projectAction -->
+		<!-- 配置projectAction -->
         <bean id="projectAction" class="com.cmsz.action.ProjectAction" scope="prototype">
         	<property name="projectService" ref="projectService"></property>
         	<property name="companyService" ref="companyService"></property>
@@ -64,6 +64,18 @@
 		<bean id="projectDao" class="com.cmsz.dao.Impl.ProjectDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
+		
+		<!-- 配置assessmentAction -->
+		<bean id="assessmentAction" class="com.cmsz.action.AssessmentAction" scope="prototype">
+			<property name="assessmentAction" ref="assessmentService"></property>
+		</bean>
+		<bean id="assessmentService" class="com.cmsz.service.Impl.AssessmentServiceImpl">
+			<property name="assessmentDao" ref="assessmentDao"></property>
+		</bean>
+		<bean id="assessmentDao" class="com.cmsz.dao.Impl.AssessmentDaoImpl">
+			<property name="sessionFactory" ref="sessionFactory"></property>
+		</bean>
+		
 		
 		<!-- 配置事务管理 -->
 		<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
@@ -114,6 +126,7 @@
 				<value>com/cmsz/domain/Employee.hbm.xml</value>
 				<value>com/cmsz/domain/Company.hbm.xml</value>
 				<value>com/cmsz/domain/Project.hbm.xml</value>
+				<value>com/cmsz/domain/Task_Assessment.hbm.xml</value>
 			</list>
 			</property>	
 		</bean>
