@@ -28,8 +28,8 @@ public class Company implements Serializable{
 	
 	//外援的集合
 	private Set<Employee> employees = new HashSet<Employee>();
-	//项目任务的集合
-	private Set<Project> projects = new HashSet<Project>();
+//	//项目任务的集合
+//	private Set<Task> tasks = new HashSet<Task>();
 
 	public Integer getCid() {
 		return cid;
@@ -63,14 +63,6 @@ public class Company implements Serializable{
 		this.employees = employees;
 	}
 
-	public Set<Project> getProjects() {
-		return projects;
-	}
-
-	public void setProjects(Set<Project> projects) {
-		this.projects = projects;
-	}
-
 	public String getContract_name() {
 		return contract_name;
 	}
@@ -86,5 +78,13 @@ public class Company implements Serializable{
 	public void setContract_code(String contract_code) {
 		this.contract_code = contract_code;
 	}
+
+/*	public Set<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}*/
 	
 }

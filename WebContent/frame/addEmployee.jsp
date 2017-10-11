@@ -57,10 +57,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <td>所属公司：</td>
 		  <td><s:select name="company.cid" headerKey="" headerValue="--请选择--" list="#session.list1" listKey="cid" listValue="cname"/></td> 
 		 </tr>
-		 <tr>
+		 
+<%--  		 <tr>
 		  <td>所属项目：</td>
-		  <td><s:select name="project.proj_id" headerKey="" headerValue="--请选择--" list="#session.list2" listKey="proj_id" listValue="proj_name"/></td> 
-		</tr>
+		  <td><s:select name="task.task_id" headerKey="" headerValue="--请选择--" list="#session.list2" listKey="task_id" listValue="budget_name"/></td> 
+		</tr> --%>
 	</table>
 </s:form>
 </body>

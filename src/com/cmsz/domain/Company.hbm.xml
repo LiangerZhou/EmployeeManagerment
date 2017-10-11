@@ -16,13 +16,13 @@
     		
     		<!-- 关联关系映射 -->
     		<set name="employees">
-    			<key column="dno"></key>
+    			<key column="cno"></key>
     			<one-to-many class="com.cmsz.domain.Employee"></one-to-many>
     		</set>
-    		<!-- 关联关系映射 -->
-			<set name="projects">
+<!--     		关联关系映射
+			<set name="tasks">
     			<key column="pno"></key>
-    			<one-to-many class="com.cmsz.domain.Project"></one-to-many> 
-    		</set>
+    			<one-to-many class="com.cmsz.domain.Task"></one-to-many> 
+    		</set> -->
     	</class>
     </hibernate-mapping>

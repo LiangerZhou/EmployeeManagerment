@@ -53,21 +53,16 @@
 			<allowed-methods>findAll,saveUI,saveInfo,editById,update,delete,exportExcel</allowed-methods><!-- struts2.5才要加 -->
 		</action>
 		
-		<action name="project_*" class="projectAction" method="{1}">
-			<result name="saveUI">/frame/addProject.jsp</result>
-			<result name="findAll">/frame/listProject.jsp</result>
-			<result name="addSuccess" type="redirectAction">project_findAll.action</result>
-			<result name="saveSuccess" type="redirect">project_findAll.action</result>
-			<result name="editSuccess">/frame/editProject.jsp</result>
-			<result name="updateSuccess" type="redirect">project_findAll.action</result>
-			<result name="delSuccess" type="redirect">project_findAll.action</result>
-			<allowed-methods>saveUI,findAll,addProj,editProj,updateProj,delProj</allowed-methods><!-- struts2.5才要加 -->
+		<action name="task_*" class="taskAction" method="{1}">
+			<result name="saveUI">/frame/addTask.jsp</result>
+			<result name="findAll">/frame/listTask.jsp</result>
+			<result name="addSuccess" type="redirectAction">task_findAll.action</result>
+			<result name="saveSuccess" type="redirect">task_findAll.action</result>
+			<result name="editSuccess">/frame/editTask.jsp</result>
+			<result name="updateSuccess" type="redirect">task_findAll.action</result>
+			<result name="delSuccess" type="redirect">task_findAll.action</result>
+			<allowed-methods>saveUI,findAll,addTask,editTask,updateTask,delTask</allowed-methods><!-- struts2.5才要加 -->
 		</action>
 		
-		<action name="assessment_*" class="assessmentAction" method="{1}">
-			<result name="saveUI">/frame/addAssessment.jsp</result>
-			<result name="find">/frame/assessment.jsp</result>
-			<allowed-methods>saveUI,find,add,del,edit</allowed-methods>
-		</action>
 	</package>   		
 </struts>

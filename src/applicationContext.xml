@@ -31,7 +31,7 @@
         <bean id="employeeAction" class="com.cmsz.action.EmployeeAction" scope="prototype">
         	<property name="employeeService" ref="employeeService"></property>
         	<property name="companyService" ref="companyService"></property>
-        	<property name="projectService" ref="projectService"></property>
+        	<!-- <property name="taskService" ref="taskService"></property> -->
         </bean>
         <!-- 配置Service的类 -->
 		<bean id="employeeService" class="com.cmsz.service.Impl.EmployeeServiceImpl">
@@ -53,29 +53,17 @@
 			<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
 		
-		<!-- 配置projectAction -->
-        <bean id="projectAction" class="com.cmsz.action.ProjectAction" scope="prototype">
-        	<property name="projectService" ref="projectService"></property>
-        	<property name="companyService" ref="companyService"></property>
+		<!-- 配置taskAction -->
+        <bean id="taskAction" class="com.cmsz.action.TaskAction" scope="prototype">
+        	<property name="taskService" ref="taskService"></property>
+        	<property name="employeeService" ref="employeeService"></property>
         </bean>
-		<bean id="projectService" class="com.cmsz.service.Impl.ProjectServiceImpl">
-			<property name="projectDao" ref="projectDao"></property>
+		<bean id="taskService" class="com.cmsz.service.Impl.TaskServiceImpl">
+			<property name="taskDao" ref="taskDao"></property>
 		</bean>
-		<bean id="projectDao" class="com.cmsz.dao.Impl.ProjectDaoImpl">
+		<bean id="taskDao" class="com.cmsz.dao.Impl.TaskDaoImpl">
 			<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
-		
-		<!-- 配置assessmentAction -->
-		<bean id="assessmentAction" class="com.cmsz.action.AssessmentAction" scope="prototype">
-			<property name="assessmentAction" ref="assessmentService"></property>
-		</bean>
-		<bean id="assessmentService" class="com.cmsz.service.Impl.AssessmentServiceImpl">
-			<property name="assessmentDao" ref="assessmentDao"></property>
-		</bean>
-		<bean id="assessmentDao" class="com.cmsz.dao.Impl.AssessmentDaoImpl">
-			<property name="sessionFactory" ref="sessionFactory"></property>
-		</bean>
-		
 		
 		<!-- 配置事务管理 -->
 		<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
@@ -125,8 +113,7 @@
 				<value>com/cmsz/domain/User.hbm.xml</value>
 				<value>com/cmsz/domain/Employee.hbm.xml</value>
 				<value>com/cmsz/domain/Company.hbm.xml</value>
-				<value>com/cmsz/domain/Project.hbm.xml</value>
-				<value>com/cmsz/domain/Task_Assessment.hbm.xml</value>
+				<value>com/cmsz/domain/Task.hbm.xml</value>
 			</list>
 			</property>	
 		</bean>

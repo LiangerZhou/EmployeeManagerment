@@ -9,10 +9,10 @@ import org.apache.struts2.ServletActionContext;
 import com.cmsz.domain.Company;
 import com.cmsz.domain.Employee;
 import com.cmsz.domain.PageBean;
-import com.cmsz.domain.Project;
+import com.cmsz.domain.Task;
 import com.cmsz.service.CompanyService;
 import com.cmsz.service.EmployeeService;
-import com.cmsz.service.ProjectService;
+import com.cmsz.service.TaskService;
 import com.cmsz.util.PoiExcel;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -56,14 +56,14 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	//spring注入部门管理的service
 	private CompanyService companyService;
 	//注入项目的service
-	private ProjectService projectService;
+//	private TaskService taskService;
 	
+/*	public void setTaskService(TaskService taskService) {
+		this.taskService = taskService;
+	}*/
 	
 	public void setCompanyService(CompanyService companyService) {
 		this.companyService = companyService;
-	}
-	public void setProjectService(ProjectService projectService) {
-		this.projectService = projectService;
 	}
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
@@ -85,9 +85,9 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	public String saveUI(){
 		//用于查询出所有的部门和项目信息
 		List<Company> list1 = companyService.findAll();
-		List<Project> list2 = projectService.findAll();
+//		List<Task> list2 = taskService.findAll();
 		ActionContext.getContext().getSession().put("list1", list1);
-		ActionContext.getContext().getSession().put("list2", list2);
+//		ActionContext.getContext().getSession().put("list2", list2);
 		return "saveUI";
 	}
 	//新增
@@ -99,9 +99,9 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	public String edit(){
 		employee = employeeService.edit(employee.getEid());
 		List<Company> list1 = companyService.findAll();
-		List<Project> list2 = projectService.findAll();
+//		List<Task> list2 = taskService.findAll();
 		ActionContext.getContext().getSession().put("list1", list1);
-		ActionContext.getContext().getSession().put("list2", list2);
+//		ActionContext.getContext().getSession().put("list2", list2);
 		return "editSuccess";
 	}
 	//根据姓名查找

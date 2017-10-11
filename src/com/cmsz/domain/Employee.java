@@ -33,8 +33,8 @@ public class Employee implements Serializable{
 	//所属公司
 	private Company company;
 	
-	//所属项目任务
-	private Project project;
+	//所属任务
+	private Task task;
 
 	public Company getCompany() {
 		return company;
@@ -44,12 +44,12 @@ public class Employee implements Serializable{
 		this.company = company;
 	}
 
-	public Project getProject() {
-		return project;
+	public Task getTask() {
+		return task;
 	}
 
-	public void setProject(Project project) {
-		this.project = project;
+	public void setTask(Task task) {
+		this.task = task;
 	}
 
 	public Integer getEid() {

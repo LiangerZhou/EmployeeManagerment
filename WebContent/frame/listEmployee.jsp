@@ -45,7 +45,6 @@ thead {
 				<th width="5%">网络账号</th>
 				<th width="5%">网络角色</th>
 				<th width="15%">所属公司</th>
-				<th width="15%">所属项目</th>
 				
 				<th width="5%">编辑</th>
 				<th width="5%">删除</th>
@@ -65,9 +64,7 @@ thead {
 					<td align="center"><s:property value="#e.workplace" /></td>
 					<td align="center"><s:property value="#e.Net_account" /></td>
 					<td align="center"><s:property value="#e.Net_role" /></td>
-					
 					<td align="center"><s:property value="#e.company.cname" /></td>
-					<td align="center"><s:property value="#e.project.proj_name" /></td>
 					
 					<td align="center"><a
 						href="${pageContext.request.contextPath}/employee_edit.action?eid=<s:property value="#e.eid"/>"><img

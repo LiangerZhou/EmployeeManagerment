@@ -21,7 +21,7 @@
     		<property name="Net_role" column="Net_role" length="20"></property>
     		
     		<!-- 关联关系映射 -->
-    		<many-to-one name="company"  lazy="false" fetch="join" class="com.cmsz.domain.Company" column="dno"></many-to-one>   		
-    	    <many-to-one name="project"  lazy="false" fetch="join" class="com.cmsz.domain.Project" column="pno"></many-to-one>   		
+    		<many-to-one name="company"  lazy="false" fetch="join" class="com.cmsz.domain.Company" column="cno"></many-to-one>   		
+    	    <many-to-one name="task"  lazy="false" fetch="join" class="com.cmsz.domain.Task" column="tno"></many-to-one> 		
     	</class>
     </hibernate-mapping>
