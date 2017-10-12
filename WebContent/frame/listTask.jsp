@@ -59,7 +59,7 @@ thead {
 		<tbody>
 			<s:iterator value="list" var="e">
 				<tr>
-					<td align="center"><input type="checkbox"  value="e.task_id"/></td>
+					<td align="center"><input type="checkbox"  value="#e.task_id"/></td>
 					<td align="center"><s:property value="#e.task_name" /></td>
 					<td align="center"><s:date format="yyyy-MM-dd" name="#e.task_cretime" /></td>
 					<td align="center"><s:date format="yyyy-MM-dd" name="#e.task_endTime" /></td>

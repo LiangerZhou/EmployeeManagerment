@@ -44,7 +44,7 @@ thead {
 		<tbody>
 			<s:iterator value="list" var="c">
 				<tr>
-					<td align="center"><input type="checkbox"  value="c.cid"/></td>
+					<td align="center"><input type="checkbox"  value="#c.cid"/></td>
 					<td align="center"><s:property value="#c.cname" /></td>
 					<td align="center"><s:property value="#c.contract_name" /></td>
 					<td align="center"><s:property value="#c.contract_code" /></td>

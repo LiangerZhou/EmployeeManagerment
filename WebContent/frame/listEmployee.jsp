@@ -53,7 +53,7 @@ thead {
 		<tbody>
 			<s:iterator value="list" var="e">
 				<tr>
-					<td align="center"><input type="checkbox"  value="e.eid"/></td>
+					<td align="center"><input type="checkbox"  value="#e.eid"/></td>
 					<td align="center"><s:property value="#e.ename" /></td>
 					<td align="center"><s:property value="#e.sex" /></td>
 					<td align="center"><s:date name="#e.joinDate" format="yyyy-MM-dd" /></td>

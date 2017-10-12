@@ -41,7 +41,7 @@ public class PoiExcel {
 
 				HSSFRow row3 = sheet.getRow((short) 2);
 				HSSFCell r3c1 = row3.getCell((short) 0);
-				r3c1.setCellValue("归属预算名称：" + elist.getCompany().getContract_name());
+				r3c1.setCellValue("归属预算名称：" + elist.getTask().getBudget_name());//此处要加控制，如果未分配任务，则不考勤
 
 				for (int i = 4; i < workArray.length + 4; i++) {
 					HSSFRow row = sheet.getRow((short) i);//获取第i+1行
@@ -57,7 +57,7 @@ public class PoiExcel {
 				FileOutputStream out = null;
 				try {
 					out = new FileOutputStream(
-							new File("D:\\项目\\外援管理系统\\6月测评线外援计提材料\\新合同外援考勤表-" + elist.getEname() + ".xls"));
+							new File(path.replace("模板", elist.getEname())));
 					workbook.write(out);
 				} catch (IOException e) {
 					e.printStackTrace();

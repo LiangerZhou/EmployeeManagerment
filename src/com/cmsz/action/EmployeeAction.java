@@ -9,10 +9,8 @@ import org.apache.struts2.ServletActionContext;
 import com.cmsz.domain.Company;
 import com.cmsz.domain.Employee;
 import com.cmsz.domain.PageBean;
-import com.cmsz.domain.Task;
 import com.cmsz.service.CompanyService;
 import com.cmsz.service.EmployeeService;
-import com.cmsz.service.TaskService;
 import com.cmsz.util.PoiExcel;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -55,12 +53,6 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	private EmployeeService employeeService;
 	//spring注入部门管理的service
 	private CompanyService companyService;
-	//注入项目的service
-//	private TaskService taskService;
-	
-/*	public void setTaskService(TaskService taskService) {
-		this.taskService = taskService;
-	}*/
 	
 	public void setCompanyService(CompanyService companyService) {
 		this.companyService = companyService;
@@ -84,10 +76,8 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	
 	public String saveUI(){
 		//用于查询出所有的部门和项目信息
-		List<Company> list1 = companyService.findAll();
-//		List<Task> list2 = taskService.findAll();
-		ActionContext.getContext().getSession().put("list1", list1);
-//		ActionContext.getContext().getSession().put("list2", list2);
+		List<Company> list = companyService.findAll();
+		ActionContext.getContext().getSession().put("list", list);
 		return "saveUI";
 	}
 	//新增
@@ -98,10 +88,8 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	//编辑
 	public String edit(){
 		employee = employeeService.edit(employee.getEid());
-		List<Company> list1 = companyService.findAll();
-//		List<Task> list2 = taskService.findAll();
-		ActionContext.getContext().getSession().put("list1", list1);
-//		ActionContext.getContext().getSession().put("list2", list2);
+		List<Company> list = companyService.findAll();
+		ActionContext.getContext().getSession().put("list", list);
 		return "editSuccess";
 	}
 	//根据姓名查找

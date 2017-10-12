@@ -63,7 +63,7 @@
 			<tr>
 				<td>所属公司：</td>
 				<td><s:select name="company.cid" value="%{model.company.cid}" headerKey=""
-						headerValue="--请选择--" list="#session.list1" listKey="cid" listValue="cname" /></td>
+						headerValue="--请选择--" list="#session.list" listKey="cid" listValue="cname" /></td>
 			</tr>
 		</table>
 	</s:form>

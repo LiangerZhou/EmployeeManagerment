@@ -1,3 +1,3 @@
-function find(){
-	
-}
+ $("select#status").change(function(){
+	 $(this).val();
+ });

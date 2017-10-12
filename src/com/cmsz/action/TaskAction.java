@@ -2,9 +2,11 @@ package com.cmsz.action;
 
 import java.util.List;
 
+import com.cmsz.domain.Company;
 import com.cmsz.domain.Employee;
 import com.cmsz.domain.PageBean;
 import com.cmsz.domain.Task;
+import com.cmsz.service.CompanyService;
 import com.cmsz.service.EmployeeService;
 import com.cmsz.service.TaskService;
 import com.opensymphony.xwork2.ActionContext;
@@ -38,11 +40,27 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}	
+	
+	public CompanyService companyService;
+	
+
+
+	public void setCompanyService(CompanyService companyService) {
+		this.companyService = companyService;
+	}
 
 	public String findAll(){
 		PageBean<Task> pageBean = taskService.findByPage(currentPage);
 		ActionContext.getContext().getValueStack().push(pageBean);
 		return "findAll";
+	}
+	
+	public String assessment() {
+		PageBean<Task> pageBean = taskService.findByPage(currentPage);
+		ActionContext.getContext().getValueStack().push(pageBean);
+		List<Company> clist = companyService.findAll();
+		ActionContext.getContext().getSession().put("clist", clist);
+		return "assessment";
 	}
 	
 	//通过action返回跳转的jsp

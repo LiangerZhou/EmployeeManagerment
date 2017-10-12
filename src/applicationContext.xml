@@ -57,6 +57,7 @@
         <bean id="taskAction" class="com.cmsz.action.TaskAction" scope="prototype">
         	<property name="taskService" ref="taskService"></property>
         	<property name="employeeService" ref="employeeService"></property>
+        	<property name="companyService" ref="companyService"></property>
         </bean>
 		<bean id="taskService" class="com.cmsz.service.Impl.TaskServiceImpl">
 			<property name="taskDao" ref="taskDao"></property>

@@ -28,12 +28,6 @@
 			<result name="deleteSuccess" type="redirect">employee_findAll.action</result>
 			<result name="findone">/frame/attendance.jsp</result>
 			<result name="exportSuccess"></result>
-<!-- 			<result name="exportSuccess" type = "stream">
-				<param name="contentType">application/vnd.ms-excel</param>
-				<param name="inputName">excelStream</param>  
-	            <param name="contentDisposition">attachment;filename="${fileName}"</param>  
-	            <param name="bufferSize">1024</param> 
-			</result> -->
 			<allowed-methods>findAll,saveUI,save,edit,update,delete,exportExcel,findById,findByName,attend</allowed-methods><!-- struts2.5才要加 -->
 		</action>
 		
@@ -56,12 +50,13 @@
 		<action name="task_*" class="taskAction" method="{1}">
 			<result name="saveUI">/frame/addTask.jsp</result>
 			<result name="findAll">/frame/listTask.jsp</result>
+			<result name="assessment">/frame/assessment.jsp</result>
 			<result name="addSuccess" type="redirectAction">task_findAll.action</result>
 			<result name="saveSuccess" type="redirect">task_findAll.action</result>
 			<result name="editSuccess">/frame/editTask.jsp</result>
 			<result name="updateSuccess" type="redirect">task_findAll.action</result>
 			<result name="delSuccess" type="redirect">task_findAll.action</result>
-			<allowed-methods>saveUI,findAll,addTask,editTask,updateTask,delTask</allowed-methods><!-- struts2.5才要加 -->
+			<allowed-methods>saveUI,findAll,addTask,editTask,updateTask,delTask,assessment</allowed-methods><!-- struts2.5才要加 -->
 		</action>
 		
 	</package>   		
