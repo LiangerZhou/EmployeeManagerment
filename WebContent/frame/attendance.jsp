@@ -10,7 +10,7 @@
 <style type="text/css">
 .table1 {
 	border: 1px solid #ddd;
-	width: 95%;
+	width: 100%;
 }
 
 thead {

@@ -63,8 +63,13 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		return "assessment";
 	}
 	
+	public String findByCpname() {
+		PageBean<Task> pageBean = taskService.findByPage(currentPage);
+		ActionContext.getContext().getValueStack().push(pageBean);
+	}
+	
 	//通过action返回跳转的jsp
-	public String saveUI(){
+	public String saveUI(){l
 		List<Employee> list = employeeService.findAll();
 		ActionContext.getContext().getValueStack().set("list",list);
 		return "saveUI";

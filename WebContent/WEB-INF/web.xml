@@ -1,48 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-					  xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
-					  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
-					  http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" metadata-complete="true" id="WebApp_ID" version="3.1">
-  <display-name>sshCMSZ</display-name>
-  
-  	<!-- 欢迎页（默认页面） -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" metadata-complete="true" version="3.1">
+  <display-name>sshM</display-name>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!-- struts2的配置，filter-name两者要保持一致 -->
   <filter>
-  		<filter-name>struts2</filter-name>
-   	 	<filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
   </filter>
-  
   <filter-mapping>
-  		<filter-name>struts2</filter-name>
-  		<url-pattern>/*</url-pattern>
+    <filter-name>struts2</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
-  
-  <!-- hibernate配置，处理懒加载问题 -->
-<!--  <filter>
-     <filter-name>hibernateFilter</filter-name>   
-     <filter-class>  org.springframework.orm.hibernate5.support.OpenSessionInViewFilter </filter-class>   
-</filter> 
-<filter-mapping>   
-     <filter-name>hibernateFilter</filter-name>   
-     <url-pattern>/*</url-pattern>   
-</filter-mapping> 
-   -->
-  
-<!-- spring的配置
-  不写 默认spring需要读取WebContent\WEB-INF\applicationContext.xml -->
- <context-param>
-  	<param-name>contextConfigLocation</param-name>
-  	<param-value>classpath:applicationContext.xml</param-value>
-  </context-param> 
-  
-	<!-- 定义spring监视器 --> 
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener> 
-	
-
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
 </web-app>

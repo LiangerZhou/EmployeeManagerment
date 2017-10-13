@@ -32,6 +32,7 @@ thead {
 	<br />
 	<div>
 	 <s:select id="status" name="company.cid" headerKey="" headerValue="--全部--" list="#session.clist" listKey="cid" listValue="cname"/>
+	 &nbsp;&nbsp;<input type="button" onclick="attend();" value="考勤表导出">
 	</div>
 	<br />
 	<table cellspacing="0" border="1" class="table1">
