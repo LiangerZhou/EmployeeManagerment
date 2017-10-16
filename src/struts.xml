@@ -4,13 +4,22 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+	<!-- 该属性指定需要Struts2处理的请求后缀，该属性的默认值是action，即所有匹配*.action的请求都由Struts2处理。
+        如果用户需要指定多个请求后缀，则多个后缀之间以英文逗号（,）隔开。 -->
+    <!-- <constant name="struts.action.extension" value="do" /> -->
+    <!-- 设置浏览器是否缓存静态内容,默认值为true(生产环境下使用),开发阶段最好关闭 -->
+    <constant name="struts.serve.static.browserCache" value="false" />
+    <!-- 当struts的配置文件修改后,系统是否自动重新加载该文件,默认值为false(生产环境下使用),开发阶段最好打开 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <!-- 开发模式下使用,这样可以打印出更详细的错误信息 -->
+    <constant name="struts.devMode" value="true" />
 	<!-- 开发模式下使用，可以打印出更详细的错误信息  -->
 	<constant name="struts.devMode" value="true"/>
 	<!-- 告知struts2运行时使用spring来创建对象 --> 
 	<constant name="struts.objectFactory" value="spring"/>
 	
 	<!-- 这个class只需填写applicationContext.xml里配置的名字就好，因为有spring来管理action了 -->
-	<package name="ssh" extends="struts-default" namespace="/">
+	<package name="ssh" extends="json-default" namespace="/">
 		
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="input">index.jsp</result>
@@ -50,14 +59,19 @@
 		<action name="task_*" class="taskAction" method="{1}">
 			<result name="saveUI">/frame/addTask.jsp</result>
 			<result name="findAll">/frame/listTask.jsp</result>
+			<result type="json">
+			  <param name="root">action</param>
+			<!--   <param name="excludeProperties">lista.emps</param> -->
+           <!--     <param name="includeProperties">lista</param> -->
+              <param name="excludeNullProperties">true</param>
+			</result>
 			<result name="assessment">/frame/assessment.jsp</result>
 			<result name="addSuccess" type="redirectAction">task_findAll.action</result>
 			<result name="saveSuccess" type="redirect">task_findAll.action</result>
 			<result name="editSuccess">/frame/editTask.jsp</result>
 			<result name="updateSuccess" type="redirect">task_findAll.action</result>
 			<result name="delSuccess" type="redirect">task_findAll.action</result>
-			<allowed-methods>saveUI,findAll,addTask,editTask,updateTask,delTask,assessment</allowed-methods><!-- struts2.5才要加 -->
+			<allowed-methods>saveUI,findAll,addTask,editTask,updateTask,delTask,assessment,findByCpname</allowed-methods><!-- struts2.5才要加 -->
 		</action>
-		
 	</package>   		
 </struts>

@@ -19,7 +19,7 @@
     d.add('010102','0101','厂商管理','${pageContext.request.contextPath }/company_findAll.action?currentPage=1','','right');
     d.add('010103','0101','任务管理','${pageContext.request.contextPath }/task_findAll.action?currentPage=1','','right');
     d.add('0102','01','外援考勤管理','${pageContext.request.contextPath }/employee_attend.action?currentPage=1','','right');
-    d.add('0103','01','外援考核管理','${pageContext.request.contextPath }/task_assessment.action?currentPage=1','','right');
+    d.add('0103','01','外援考核管理','${pageContext.request.contextPath }/task_assessment.action','','right');
     document.write(d);
   </script>
 </div>

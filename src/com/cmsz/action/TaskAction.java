@@ -62,14 +62,28 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		ActionContext.getContext().getSession().put("clist", clist);
 		return "assessment";
 	}
+	private List<Task> lista ;
 	
+	public void setLista(List<Task> lista) {
+		this.lista = lista;
+	}
+
 	public String findByCpname() {
-		PageBean<Task> pageBean = taskService.findByPage(currentPage);
-		ActionContext.getContext().getValueStack().push(pageBean);
+		lista = taskService.findAll();
+		if (lista == null) {
+			return null;
+		}
+		else {
+			System.out.println(lista.size());
+		
+			return "assessmentByComp";
+		}
 	}
 	
+	
+
 	//通过action返回跳转的jsp
-	public String saveUI(){l
+	public String saveUI(){
 		List<Employee> list = employeeService.findAll();
 		ActionContext.getContext().getValueStack().set("list",list);
 		return "saveUI";
