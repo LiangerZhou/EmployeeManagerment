@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    	<class name="com.cmsz.domain.Company" table="company">
+    		<id name="cid" column="cid">
+    			<generator class="native"/>
+    		</id>
+    		
+    		<property name="cname" column="cname" length="20"/>
+    		<property name="cdesc" column="cdesc" length="100"/>
+    		<property name="contract_name" column="contract_name" length="200"></property>
+			<property name="contract_code" column="contract_code" length="200"></property>
+    		
+    		<!-- 关联关系映射 -->
+    		<set name="employees">
+    			<key column="cno"></key>
+    			<one-to-many class="com.cmsz.domain.Employee"></one-to-many>
+    		</set>
+<!--     		关联关系映射
+			<set name="tasks">
+    			<key column="pno"></key>
+    			<one-to-many class="com.cmsz.domain.Task"></one-to-many> 
+    		</set> -->
+    	</class>
+    </hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+                 
+<hibernate-mapping >
+	<!-- name是实体类的具体路径，table是定义创建表的名字-->
+	<class name="com.cmsz.domain.User" table="user" >
+		<!-- 定义主键的名称 -->
+		<id name="id" column="id" >
+			<!-- 定义主键为自动增长 -->
+			<generator class="native" />
+		</id>
+		<!-- 定义数据库的其他字段的具体描述 -->
+		<property name="username" type="java.lang.String" length="50" column="username" not-null="true"></property>
+		<property name="password" type="java.lang.String" length="50" column="password" not-null="true"></property>
+	</class>
+</hibernate-mapping>

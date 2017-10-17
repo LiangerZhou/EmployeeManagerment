@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    	<class name="com.cmsz.domain.Employee" table="employee">
+    		<id name="eid" column="eid">
+    			<generator class="native"/>
+    		</id>
+    		
+    		<property name="ename" column="ename" length="20"></property>
+    		<property name="sex" column="sex" length="10"></property>
+    		<property name="joinDate" column="joinDate"></property>
+    		<property name="leftDate" column="leftDate"></property>
+    		<property name="e_level" column="e_level" length="20"></property>
+    		<property name="on_off_duty" column="on_off_duty" length="20"></property>
+    		<property name="idCard" column="idCard" length="18"></property>
+    		<property name="workplace" column="workplace" length="20"></property>
+    		<property name="Net_account" column="Net_account" length="20"></property>
+    		<property name="Net_role" column="Net_role" length="20"></property>
+    		
+    		<!-- 关联关系映射 -->
+    		<many-to-one name="company"  lazy="false" fetch="join" class="com.cmsz.domain.Company" column="cno"></many-to-one>   		
+    	    <many-to-one name="task"  lazy="false" fetch="join" class="com.cmsz.domain.Task" column="tno"></many-to-one> 		
+    	</class>
+    </hibernate-mapping>
