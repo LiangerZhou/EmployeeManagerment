@@ -11,8 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>任务列表</title>
-</head>
-<body>
+
 <style type="text/css">
 .table1 {
 	border: 1px solid #ddd;

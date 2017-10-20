@@ -20,4 +20,6 @@ public interface CompanyDao {
 	
 	void delete(Company company);
 
+	List<Company> findByName(String cpname);
+
 }

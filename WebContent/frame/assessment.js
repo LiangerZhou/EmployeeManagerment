@@ -11,20 +11,22 @@ function submitPage() {
 	        url: 'task_findByCpname.action',
 	        success : function (data) {
 	        	console.log(data);
-	        	var a = JSON.stringify(data);
-	        	console.log(a);
-	       }
+	        	$("#taskTable").bootstrapTable('load', data);
+	       },
+	        error: function(){
+	        	alert("错误");
+	        }
 	   })
 }
 
 
 //导出考核表
 function exportE() {
-
+	var cpname = $("#status").val();
 	$.ajax({
-	    dataType: "",
+	    dataType: "text",
 	    data: {
-
+	    	cpname,
 	    },
 	    type: "post", 
 	    url: 'task_exportExcel.action',

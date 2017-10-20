@@ -20,4 +20,8 @@ public interface TaskDao {
 
 	List<Task> findAll();
 
+	List<Task> findByProperties(String cpname);
+
+	List<Task> findAllProperties(String cpname);
+
 }

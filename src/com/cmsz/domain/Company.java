@@ -28,8 +28,6 @@ public class Company implements Serializable{
 	
 	//外援的集合
 	private Set<Employee> employees = new HashSet<Employee>();
-//	//项目任务的集合
-//	private Set<Task> tasks = new HashSet<Task>();
 
 	public Integer getCid() {
 		return cid;

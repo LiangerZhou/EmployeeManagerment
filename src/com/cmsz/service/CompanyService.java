@@ -23,4 +23,6 @@ public interface CompanyService {
 
 	InputStream exportExcel();
 
+	List<Company> findByName(String cpname);
+
 }

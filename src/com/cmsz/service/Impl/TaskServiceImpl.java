@@ -64,5 +64,17 @@ public class TaskServiceImpl implements TaskService{
 		return taskDao.findAll();
 	}
 
+	@Override
+	public List<Task> findByProperties(String cpname) {
+		// TODO Auto-generated method stub
+		return taskDao.findByProperties(cpname);
+	}
+
+	@Override
+	public List<Task> findAllProperties(String cpname) {
+		// TODO Auto-generated method stub
+		return taskDao.findAllProperties(cpname);
+	}
+
 
 }

@@ -5,19 +5,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>任务考核</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/bootstrap-table.min.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/jQuery/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/frame/assessment.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/bootstrap-table.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/bootstrap/bootstrap-table-zh-CN.min.js"></script>
+<title>Insert title here</title>
 
 <style type="text/css">
 .table1 {
@@ -29,35 +17,28 @@ thead {
 	background-color: lightblue;
 }
 </style>
+
 </head>
 <body>
-	<div align="center" style="font-size: 24px; color: #666">任务考核</div>
-	<br />
-	<div>
-	 &nbsp;&nbsp;<s:select id="status" name="company.cid" onchange="submitPage()" headerKey="" headerValue="--全部--" list="#session.clist" listKey="cid" listValue="cname"/>
-	 &nbsp;&nbsp;<input type="button" onclick="exportE();" value="考勤表导出">
-	</div>
-	<br />
-	<div class="table-responsive">
-		<table data-show-refresh="true" data-page-size="5" data-toggle="table" id="taskTable" class="taskTable" data-height="80%" data-pagination="true" data-search="true">
+<table cellspacing="0" border="1" class="table1">
 		<thead>
 			<tr>
-				<th data-field="task_id" data-checkbox="true"></th>
-				<th data-field="task_name" data-align="right">任务名称</th>
-				<th data-field="task_creTime" data-align="right">任务开始时间</th>
-				<th data-field="task_endTime" data-align="right">计划完成时间</th>
-				<th data-field="real_endTime" data-align="right">实际完成时间</th>
-				<th data-field="workdays" data-align="right">工作量</th>
-				<th data-field="work_efficiency" data-align="right">工作效率（30分）</th>
-				<th data-field="work_quality" data-align="right">工作质量（40分）</th>
-				<th data-field="work_norm" data-align="right">流程规范执行情况（30分）</th>
-				<th data-field="work_score" data-align="right">工作任务考核得分</th>
-				<th data-field="charge_man" data-align="right">服务质量评审人</th>
-				<th data-field="workType" data-align="right">工作类型</th>
-				<th data-field="remark" data-align="right">备注</th>
+				<th style="width: 3%;height: 10px;"><input type="checkbox" /></th>
+				<th width="10%">任务名称</th>
+				<th width="8%">任务开始时间</th>
+				<th width="8%">计划完成时间</th>
+				<th width="8%">实际完成时间</th>
+				<th width="8%">工作量</th>
+				<th width="8%">工作效率（30分）</th>
+				<th width="10%">工作质量（40分）</th>
+				<th width="8%">流程规范执行情况（30分）</th>
+				<th width="5%">工作任务考核得分</th>
+				<th width="5%">服务质量评审人</th>
+				<th width="5%">工作类型</th>
+				<th width="10%">备注</th>
 			</tr>
-		</thead>	
-	 	<%-- <tbody>
+		</thead>
+		<tbody>
 			<s:iterator value="list" var="e">
 				<tr>
 					<td align="center"><input type="checkbox"  value="#e.task_id"/></td>
@@ -75,11 +56,12 @@ thead {
 					<td align="center"><s:property value="#e.remark" /></td>
 				</tr>
 			</s:iterator>
-		</tbody> --%>
+		</tbody>
 	</table>
 	<br />
-<%-- 
-	<table >
+
+
+	<table border="0" cellspacing="0" width="95%">
 		<tr>
 			<td align="right"><span>第<s:property value="currentPage" />
 					页&nbsp;&nbsp;总 共<s:property value="pageCount" /> 页
@@ -98,9 +80,6 @@ thead {
    </s:if>
 			</span></td>
 		</tr>
-	</table>  --%>
-	</div> 
-	<br />
-
+	</table>
 </body>
 </html>

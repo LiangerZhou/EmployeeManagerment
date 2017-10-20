@@ -10,9 +10,9 @@
 		</id>
 		
 		<property name="task_name" length="50" column="task_name"></property>
-		<property name="task_creTime"  length="50" column="task_creTime"></property>
-		<property name="task_endTime"  length="50" column="task_endTime"></property>
-		<property name="real_endTime"  length="50" column="real_endTime"></property>
+		<property name="task_creTime"  column="task_creTime"></property>
+		<property name="task_endTime"  column="task_endTime"></property>
+		<property name="real_endTime"  column="real_endTime"></property>
 		<property name="workdays" length="50" column="workdays"></property>
 		<property name="workratio" length="50" column="workratio"></property>
 		<property name="work_efficiency" length="50" column="work_efficiency"></property>
@@ -29,7 +29,7 @@
 		<!-- 关联关系映射 -->
     	<!-- <one-to-many name="employees"  lazy="false" fetch="join" class="com.cmsz.domain.Employee" column="tno"></one-to-many> -->
     	
-     	<set name="emps">
+     	<set name="emps" inverse="true" cascade="all" lazy="false">
     			<key column="tno"></key>
     			<one-to-many class="com.cmsz.domain.Employee"></one-to-many>
     	</set> 

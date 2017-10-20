@@ -55,4 +55,12 @@ public class CompanyDaoImpl extends HibernateDaoSupport implements CompanyDao {
 		this.getHibernateTemplate().delete(company);
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Company> findByName(String cpname) {
+		String hql = "from Company where cname= ?";
+		List<Company> list = (List<Company>) this.getHibernateTemplate().find(hql,cpname);
+		return list;
+	}
+
 }

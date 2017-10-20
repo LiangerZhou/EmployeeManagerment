@@ -19,5 +19,9 @@ public interface TaskService {
 
 	void update(Task task);
 
+	List<Task> findByProperties(String cpname);
+
+	List<Task> findAllProperties(String cpname);
+
 
 }

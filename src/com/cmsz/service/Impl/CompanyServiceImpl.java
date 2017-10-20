@@ -177,4 +177,10 @@ public class CompanyServiceImpl implements CompanyService {
 		return is;
 		
 	}
+
+	@Override
+	public List<Company> findByName(String cpname) {
+		
+		return companyDao.findByName(cpname);
+	}
 }
