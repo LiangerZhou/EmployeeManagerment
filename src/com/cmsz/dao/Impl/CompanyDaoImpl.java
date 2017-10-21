@@ -58,8 +58,9 @@ public class CompanyDaoImpl extends HibernateDaoSupport implements CompanyDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Company> findByName(String cpname) {
-		String hql = "from Company where cname= ?";
-		List<Company> list = (List<Company>) this.getHibernateTemplate().find(hql,cpname);
+		String hql = "from Company where cid= ?";
+		int cid = Integer.parseInt(cpname);
+		List<Company> list = (List<Company>) this.getHibernateTemplate().find(hql,cid);
 		return list;
 	}
 

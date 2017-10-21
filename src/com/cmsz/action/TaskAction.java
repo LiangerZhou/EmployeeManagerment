@@ -1,10 +1,8 @@
 package com.cmsz.action;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -19,8 +17,6 @@ import com.cmsz.util.PoiExcel;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
-
-import net.sf.json.JSONArray;
 
 @SuppressWarnings("serial")
 public class TaskAction extends ActionSupport implements ModelDriven<Task>{
@@ -136,12 +132,17 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 	public String exportExcel() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String cpname = request.getParameter("cpname");
-		List<Company> cList = companyService.findByName(cpname);
-		
 		list = taskService.findByProperties(cpname);
-		String path =request.getSession().getServletContext().getRealPath("/")+"Templet\\1.付款凭证-任务考核表-维护类开发-测评业务线-纸质签字版反馈综合室-模板.xls";//获取存在项目中的模板的真实路径
 		PoiExcel poiExcel = new PoiExcel();
-		poiExcel.assessExcel(list,path,cList);
+		String path;
+		if("".equals(cpname)||cpname.isEmpty()) {
+		    path = request.getSession().getServletContext().getRealPath("/")+"Templet\\2.付款凭证-任务考核表-电子版反馈给综合室.xlsx";
+			poiExcel.assessAllExcel(list, path);
+		}else {
+			List<Company> cList = companyService.findByName(cpname);
+			path = request.getSession().getServletContext().getRealPath("/")+"Templet\\1.付款凭证-任务考核表-维护类开发-测评业务线-纸质签字版反馈综合室（各公司总表） - 模板.xlsx";//获取存在项目中的模板的真实路径
+			poiExcel.assessExcel(list,path,cList);//各公司分表
+		}
 		return null;
 	}
 
