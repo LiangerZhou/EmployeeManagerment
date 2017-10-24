@@ -21,7 +21,7 @@ public interface TaskService {
 
 	List<Task> findByProperties(String cpname);
 
-	List<Task> findAllProperties(String cpname);
+	List findAllProperties(String cpname);
 
 
 }

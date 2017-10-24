@@ -70,8 +70,9 @@ public class TaskServiceImpl implements TaskService{
 		return taskDao.findByProperties(cpname);
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public List<Task> findAllProperties(String cpname) {
+	public List findAllProperties(String cpname) {
 		// TODO Auto-generated method stub
 		return taskDao.findAllProperties(cpname);
 	}

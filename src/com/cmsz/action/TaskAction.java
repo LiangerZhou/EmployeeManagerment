@@ -129,10 +129,10 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		return "delSuccess";
 	}
 	
-	public String exportExcel() {
+	public String exportAss() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String cpname = request.getParameter("cpname");
-		list = taskService.findByProperties(cpname);
+		List<Task> list = taskService.findByProperties(cpname);
 		PoiExcel poiExcel = new PoiExcel();
 		String path;
 		if("".equals(cpname)||cpname.isEmpty()) {
@@ -146,4 +146,22 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	public String exportMid() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String cpname = request.getParameter("cpname");
+		@SuppressWarnings("rawtypes")
+		List list = taskService.findAllProperties(cpname);//查询所有任务根据公司名，若为空就是查询所有的
+		PoiExcel poiExcel = new PoiExcel();
+		String path;
+		if("".equals(cpname)||cpname.isEmpty()) {
+		    path = request.getSession().getServletContext().getRealPath("/")+"Templet\\4.付款凭证-中间表-电子版反馈给综合室 - 模板.xlsx";
+			poiExcel.midAllExcel(list, path);
+		}else {
+			List<Company> cList = companyService.findByName(cpname);
+			path = request.getSession().getServletContext().getRealPath("/")+"Templet\\3.付款凭证-中间表-维护类开发-测评业务线-纸质签字版反馈给综合室（各公司汇总总表） - 模板.xlsx";//获取存在项目中的模板的真实路径"
+			poiExcel.midExcel(list,path,cList);//各公司分表
+		}
+		return null;
+	}
 }

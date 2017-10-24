@@ -72,13 +72,19 @@ public class TaskDaoImpl extends HibernateDaoSupport implements TaskDao{
 		return list;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
-	public List<Task> findAllProperties(String cpname) {
+	public List findAllProperties(String cpname) {
 		int a;
-		String hql = " from Task t,Employee e, Company c where t.task_id = e.task and e.company = c.cid and c.cid = ? ";
-		a = Integer.parseInt(cpname);
-		List<Task> list = (List<Task>) this.getHibernateTemplate().find(hql,a);
+		List list;
+		if(cpname==null||"".equals(cpname)) {
+			String hql = "from Task t,Employee e, Company c where t.task_id = e.task and e.company = c.cid ";
+			list = this.getHibernateTemplate().find(hql);
+		}else {
+			String hql = " from Task t,Employee e, Company c where t.task_id = e.task and e.company = c.cid and c.cid = ? ";
+			a = Integer.parseInt(cpname);
+			list =  this.getHibernateTemplate().find(hql,a);
+		}
 		return list;
 	}
 

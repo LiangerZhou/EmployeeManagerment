@@ -21,7 +21,7 @@ function submitPage() {
 
 
 //导出考核表
-function exportE() {
+function exportAss() {
 	var cpname = $("#status").val();
 	$.ajax({
 	    dataType: "text",
@@ -29,7 +29,23 @@ function exportE() {
 	    	cpname,
 	    },
 	    type: "post", 
-	    url: 'task_exportExcel.action',
+	    url: 'task_exportAss.action',
+	    success: function (data) {
+	    }
+	});
+}
+
+
+//导出中间表
+function exportMid() {
+	var cpname = $("#status").val();
+	$.ajax({
+	    dataType: "text",
+	    data: {
+	    	cpname,
+	    },
+	    type: "post", 
+	    url: 'task_exportMid.action',
 	    success: function (data) {
 	    }
 	});

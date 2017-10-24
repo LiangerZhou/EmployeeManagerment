@@ -22,6 +22,7 @@ public interface TaskDao {
 
 	List<Task> findByProperties(String cpname);
 
-	List<Task> findAllProperties(String cpname);
+	@SuppressWarnings("rawtypes")
+	List findAllProperties(String cpname);
 
 }
