@@ -82,10 +82,10 @@ thead {
 
 	<table border="0" cellspacing="0" cellpadding="0" width="95%">
 		<tr>
-			<td align="right"><span>第<s:property value="currentPage" />
-					页&nbsp;&nbsp;总 共<s:property value="pageCount" /> 页
+			<td align="right"><span>第&nbsp;<s:property value="currentPage" />
+					页&nbsp;&nbsp;总共&nbsp;<s:property value="pageCount" />&nbsp;页
 			</span>&nbsp;&nbsp; <span>总记录数：<s:property value="totalSize" />
-					&nbsp;&nbsp;每页显示:<s:property value="pageSize" />
+					&nbsp;&nbsp;每页显示：<s:property value="pageSize" />
 			</span>&nbsp;&nbsp; <span> <s:if test="currentPage != 1">
 						<a
 							href="${pageContext.request.contextPath }/employee_findAll.action?currentPage=1">[首页]</a>&nbsp;&nbsp;

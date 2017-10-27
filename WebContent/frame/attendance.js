@@ -32,7 +32,6 @@
 			if(obj[i].checked){
 				str+=obj[i].value+',';
 			}
-			
 		}
 		$.ajax({
 	        dataType: "json",

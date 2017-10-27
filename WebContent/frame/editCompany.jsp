@@ -7,9 +7,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head></head>
 <body>
-<table border="0" width="600px">
+<table border="0" width="95%">
 <tr>
-<td align="center" style="font-size:24px; color:#666">厂商编辑 </td>
+<td align="center" style="font-size:24px; color:#666">外援公司信息编辑 </td>
 </tr>
 <tr>
 <td align="right" > 
@@ -24,14 +24,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <s:form id="saveForm" action="company_update" method="post" namespace="/" theme="simple">
 <!-- 隐藏域，指明修改的是哪个公司 -->
 <s:hidden name="cid" value="%{model.cid}"></s:hidden>
-	<table style="font-size: 16px">
+	<table style="font-size: 16px" align=center>
 		<tr>
-		  <td>厂商名称：</td>
+		  <td>外援公司简称：</td>
 		  <td><s:textfield name="cname" value="%{model.cname}"/></td>
 		</tr>
 		<tr>
+		  <td>外援公司全称：</td>
+		  <td><s:textfield name="cdesc" value="%{model.cdesc}"/></td>
+		</tr>
+		<tr>
 		  <td>合同名称：</td>
-		  <td><s:textfield rows="5" cols="50" name="contract_name" value="%{model.contract_name}"/></td>
+		  <td><s:textfield rows="10" cols="100" name="contract_name" value="%{model.contract_name}"/></td>
 		</tr>
 		<tr>
 		  <td>合同编号：</td>
@@ -39,13 +43,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		     <s:textfield rows="5" cols="50" name="contract_code" value="%{model.contract_code}"></s:textfield>
 		  </td>
 		</tr>
-		<tr>
-		  <td>备注：</td>
-		  <td>
-			<s:textfield rows="5" cols="50" name="cdesc" value="%{model.cdesc}"></s:textfield>
-		  </td>
-		</tr>
-		
 	</table>
 </s:form>
 </body>

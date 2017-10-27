@@ -6,6 +6,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.cmsz.dao.TaskDao;
+import com.cmsz.domain.Employee;
 import com.cmsz.domain.Task;
 
 public class TaskDaoImpl extends HibernateDaoSupport implements TaskDao{
@@ -72,18 +73,18 @@ public class TaskDaoImpl extends HibernateDaoSupport implements TaskDao{
 		return list;
 	}
 
-	@SuppressWarnings("rawtypes")
+	@SuppressWarnings("unchecked")
 	@Override
-	public List findAllProperties(String cpname) {
+	public List<Employee> findAllProperties(String cpname) {
 		int a;
-		List list;
+		List<Employee> list;
 		if(cpname==null||"".equals(cpname)) {
-			String hql = "from Task t,Employee e, Company c where t.task_id = e.task and e.company = c.cid ";
-			list = this.getHibernateTemplate().find(hql);
+			String hql = "select e from Task t,Employee e, Company c where t.task_id = e.task and e.company = c.cid ";
+			list = (List<Employee>) this.getHibernateTemplate().find(hql);
 		}else {
-			String hql = " from Task t,Employee e, Company c where t.task_id = e.task and e.company = c.cid and c.cid = ? ";
+			String hql = "select e from Task t,Employee e, Company c where t.task_id = e.task and e.company = c.cid and c.cid = ? ";
 			a = Integer.parseInt(cpname);
-			list =  this.getHibernateTemplate().find(hql,a);
+			list =  (List<Employee>) this.getHibernateTemplate().find(hql,a);
 		}
 		return list;
 	}

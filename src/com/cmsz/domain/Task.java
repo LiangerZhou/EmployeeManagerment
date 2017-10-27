@@ -37,7 +37,7 @@ public class Task implements Serializable{
 	private String workType;//工作类型
 	private String remark;//备注
 	
-	private Set<Employee> emps = new HashSet<Employee>();//实施人
+	private Set<Employee> emps = new HashSet<Employee>();
 
 	public Integer getTask_id() {
 		return task_id;
@@ -147,6 +147,5 @@ public class Task implements Serializable{
 	public void setEmps(Set<Employee> emps) {
 		this.emps = emps;
 	}
-
 	
 }

@@ -25,7 +25,6 @@
 		<property name="charge_man" length="50" column="charge_man"></property>
 		<property name="workType" length="50" column="workType"></property>
 		<property name="remark" length="50" column="remark"></property>
-		
 		<!-- 关联关系映射 -->
     	<!-- <one-to-many name="employees"  lazy="false" fetch="join" class="com.cmsz.domain.Employee" column="tno"></one-to-many> -->
     	

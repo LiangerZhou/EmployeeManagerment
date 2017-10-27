@@ -30,9 +30,9 @@ public class Employee implements Serializable{
 	private String workplace; //工作地点
 	private String Net_account; //网络账号
 	private String Net_role; //网络角色
+	private Integer Price;//单价
 	//所属公司
 	private Company company;
-	
 	//所属任务
 	private Task task;
 
@@ -138,6 +138,14 @@ public class Employee implements Serializable{
 
 	public void setNet_role(String net_role) {
 		Net_role = net_role;
+	}
+
+	public Integer getPrice() {
+		return Price;
+	}
+
+	public void setPrice(Integer price) {
+		Price = price;
 	}
 
 }

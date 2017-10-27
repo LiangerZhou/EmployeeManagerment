@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
 .table1 {
 	border: 1px solid #ddd;
-	width: 95%;
+	width: 98%;
 }
 
 thead {
@@ -24,7 +24,7 @@ thead {
 </style>
 </head>
 <body>
-	<table border="0" width="95%">
+	<table border="0" width="98%">
 		<tr>
 			<td align="center" style="font-size: 24px; color: #666">任务管理</td>
 		</tr>
@@ -42,15 +42,13 @@ thead {
 				<th width="8%">任务开始时间</th>
 				<th width="8%">计划完成时间</th>
 				<th width="8%">实际完成时间</th>
-				<th width="8%">工作量</th>
-				<th width="8%">工作效率（30分）</th>
-				<th width="10%">工作质量（40分）</th>
-				<th width="8%">流程规范执行情况（30分）</th>
-				<th width="5%">工作任务考核得分</th>
+				<th width="5%">工作量</th>
+				<th width="7%">工作效率（30分）</th>
+				<th width="7%">工作质量（40分）</th>
+				<th width="7%">流程规范执行情况（30分）</th>
+				<th width="7%">工作任务考核得分</th>
 				<th width="5%">服务质量评审人</th>
-				<th width="5%">工作类型</th>
-				<th width="10%">备注</th>
-				
+				<th width="7%">工作类型</th>
 				<th width="5%">编辑</th>
 				<th width="5%">删除</th>
 			</tr>
@@ -70,15 +68,12 @@ thead {
 					<td align="center"><s:property value="#e.work_score" /></td>
 					<td align="center"><s:property value="#e.charge_man" /></td>
 					<td align="center"><s:property value="#e.workType" /></td>
-					<td align="center"><s:property value="#e.remark" /></td>
-					
 					<td align="center"><a
 						href="${pageContext.request.contextPath}/task_editTask.action?task_id=<s:property value="#e.task_id"/>"><img
 							src="<%=basePath%>images/编辑.png" /></a></td>
 					<td align="center"><a
 						href="${pageContext.request.contextPath}/task_delTask.action?task_id=<s:property value="#e.task_id"/>"><img
 							src="<%=basePath%>images/trash.gif" /></a></td>
-
 				</tr>
 			</s:iterator>
 		</tbody>
@@ -86,12 +81,12 @@ thead {
 	<br />
 
 
-	<table border="0" cellspacing="0" width="95%">
+	<table border="0" cellspacing="0" width="98%">
 		<tr>
-			<td align="right"><span>第<s:property value="currentPage" />
-					页&nbsp;&nbsp;总 共<s:property value="pageCount" /> 页
+			<td align="right"><span>第&nbsp;<s:property value="currentPage" />
+					页&nbsp;&nbsp;总共&nbsp;<s:property value="pageCount" /> 页
 			</span>&nbsp;&nbsp; <span>总记录数：<s:property value="totalSize" />
-					&nbsp;&nbsp;每页显示:<s:property value="pageSize" />
+					&nbsp;&nbsp;每页显示：<s:property value="pageSize" />
 			</span>&nbsp;&nbsp; <span> <s:if test="currentPage != 1">
 						<a
 							href="${pageContext.request.contextPath }/task_findAll.action?currentPage=1">[首页]</a>&nbsp;&nbsp;

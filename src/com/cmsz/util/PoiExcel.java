@@ -12,7 +12,6 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFDataFormat;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -81,7 +80,12 @@ public class PoiExcel {
 
 		}
 	}
-
+	/*
+	 * 按公司考核表导出
+	 * 1、工作任务list
+	 * 2、传入公司名
+	 * 3、传入模板的真实路径
+	 */
 	public void assessExcel(List<Task> list, String path,List<Company> cList) {
 		XSSFWorkbook workbook;
 		try {
@@ -89,7 +93,6 @@ public class PoiExcel {
 			XSSFSheet sheet = workbook.getSheet("Sheet1");//获取Sheet1工作表，一个excel称为工作簿，可包含多个工作表
 			XSSFRow row1 = sheet.getRow((short) 0);
 			XSSFCell r1c1 = row1.getCell((short) 0);
-			//最好在company表加一个别名字段
 			r1c1.setCellValue(cList.get(0).getCdesc()+"合作伙伴技术服务工作任务考核-" + "2017" + "年" + "6" + "月-内部汇总");//要改
 			XSSFRow row2 = sheet.getRow((short) 1);
 			XSSFCell r2c1 = row2.getCell((short) 0);
@@ -138,7 +141,7 @@ public class PoiExcel {
 				XSSFDataFormat df = workbook.createDataFormat();  //此处设置数据格式
 				style.setDataFormat(df.getFormat("#,#0.00"));
 				XSSFFont font = workbook.createFont();
-		        font.setColor(Font.COLOR_RED);//HSSFColor.VIOLET.index //字体颜色
+		        font.setColor(Font.COLOR_RED);//字体颜色
 		        font.setFontName("宋体");
 		        font.setBold(true);
 		        font.setFontHeightInPoints((short)10);//设置字体大小
@@ -160,7 +163,11 @@ public class PoiExcel {
 				e.printStackTrace();
 			}
 		}
-
+	/*
+	 * 考核汇总表导出
+	 * 1、工作任务list
+	 * 2、传入模板的真实路径
+	 */
 	public void assessAllExcel(List<Task> list, String path) {
 		XSSFWorkbook workbook;
 			try {
@@ -169,7 +176,6 @@ public class PoiExcel {
 				XSSFRow row1 = sheet.getRow((short) 0);
 				XSSFCell r1c1 = row1.getCell((short) 0);
 				r1c1.setCellValue("合作伙伴技术服务工作任务考核-"+"2017"+"年"+"6"+"月-内部汇总");
-				
 				for(int i = 0; i<list.size(); i++) {
 					XSSFRow row = sheet.getRow((short) i+2);//获取第i+3行
 					XSSFCell cellr2 = row.getCell((short) 1);//获取第2列
@@ -218,7 +224,11 @@ public class PoiExcel {
 			}
 			
 	}
-
+	/*
+	 * 中间汇总表导出
+	 * 1、分配了任务的员工list
+	 * 2、传入模板的真实路径
+	 */
 	public void midAllExcel(List<Employee> list, String path) {
 		XSSFWorkbook workbook;
 			try {
@@ -232,9 +242,8 @@ public class PoiExcel {
 					XSSFRow row = sheet.getRow((short)(2+i));
 					XSSFCell cell1 = row.getCell((short) 0);
 					cell1.setCellValue(i+1);
-					
 					XSSFCell cell2 = row.getCell((short) 1);
-					cell2.setCellValue(list.get(i).getTask().getBudget_name());
+					cell2.setCellValue(((Employee) list.get(i)).getTask().getBudget_name());
 					XSSFCell cell3 = row.getCell((short) 2);
 					cell3.setCellValue(list.get(i).getTask().getTask_name());
 					XSSFCell cell4 = row.getCell((short) 3);
@@ -246,15 +255,15 @@ public class PoiExcel {
 					XSSFCell cell7 = row.getCell((short) 6);
 					cell7.setCellValue(list.get(i).getOn_off_duty());
 					XSSFCell cell8 = row.getCell((short) 7);
-//					cell8.setCellValue(list.get(i).getSgleMoney());//单价
+					cell8.setCellValue(list.get(i).getPrice());//单价
 					XSSFCell cell9 = row.getCell((short) 8);
 					cell9.setCellValue(list.get(i).getTask().getWorkdays());
 					XSSFCell cell10 = row.getCell((short) 9);
 					cell10.setCellValue(0);//离岸费
 					XSSFCell cell11 = row.getCell((short) 10);
-					cell11.setCellValue(0);//派驻费
+					cell11.setCellFormula("H"+(3+i)+"*I"+(3+i)+"");//派驻费
 					XSSFCell cell12 = row.getCell((short) 11);
-					cell12.setCellValue(0);//总金额计算
+					cell12.setCellFormula("J"+(4+i)+"+K"+(4+i)+"");//总金额计算
 					XSSFCell cell13 = row.getCell((short) 12);
 					cell13.setCellValue(list.get(i).getTask().getRemark());//外援备注，什么时候入职离职 请假等
 					XSSFCell cell14 = row.getCell((short) 13);
@@ -279,9 +288,88 @@ public class PoiExcel {
 			
 		
 	}
-
-	public void midExcel(List<Task> list, String path, List<Company> cList) {
-		// TODO Auto-generated method stub
+	/*
+	 * 按公司中间表导出
+	 * 1、分配了任务的员工list
+	 * 2、传入公司名
+	 * 3、传入模板的真实路径
+	 */
+	public void midExcel(List<Employee> list, String path, List<Company> cList) {
+		XSSFWorkbook workbook;
+		try {
+			workbook = new XSSFWorkbook(new FileInputStream(path));
+			XSSFSheet sheet = workbook.getSheet("Sheet1");//获取Sheet1工作表，一个excel称为工作簿，可包含多个工作表
+			XSSFRow row1 = sheet.getRow((short) 0);
+			XSSFCell r1c1 = row1.getCell((short) 0);
+			//最好在company表加一个别名字段
+			r1c1.setCellValue("合作伙伴技术服务人员明细表-" + "2017" + "年第" + "6" + "月");//要改
+			XSSFRow row2 = sheet.getRow((short) 1);
+			XSSFCell r2c1 = row2.getCell((short) 0);
+			r2c1.setCellValue("合同编号：" + cList.get(0).getContract_code());//此处要加控制，如果未分配任务，则不考勤
+			XSSFCell r2c2 = row2.getCell((short) 3);
+			r2c2.setCellValue("合同名称：" + cList.get(0).getContract_name());
+			XSSFCell r2c3 = row2.getCell((short) 9);
+			r2c3.setCellValue("归属科室/业务线："+ list.get(0).getTask().getQm_side());
+			
+			for(int i = 0;i<list.size();i++) {
+				XSSFRow row = sheet.getRow((short)(3+i));
+				XSSFCell cell1 = row.getCell((short) 0);
+				cell1.setCellValue(i+1);
+				XSSFCell cell2 = row.getCell((short) 1);
+				cell2.setCellValue(((Employee) list.get(i)).getTask().getBudget_name());
+				XSSFCell cell3 = row.getCell((short) 2);
+				cell3.setCellValue(list.get(i).getTask().getTask_name());
+				XSSFCell cell4 = row.getCell((short) 3);
+				cell4.setCellValue(list.get(i).getEname());//获取外援姓名
+				XSSFCell cell5 = row.getCell((short) 4);
+				cell5.setCellValue(list.get(i).getE_level());
+				XSSFCell cell6 = row.getCell((short) 5);
+				cell6.setCellValue(list.get(i).getTask().getWorkType());
+				XSSFCell cell7 = row.getCell((short) 6);
+				cell7.setCellValue(list.get(i).getOn_off_duty());
+				XSSFCell cell8 = row.getCell((short) 7);
+				cell8.setCellValue(list.get(i).getPrice());//单价
+				XSSFCell cell9 = row.getCell((short) 8);
+				cell9.setCellValue(list.get(i).getTask().getWorkdays());
+				XSSFCell cell10 = row.getCell((short) 9);
+				cell10.setCellValue(0);//离岸费
+				XSSFCell cell11 = row.getCell((short) 10);
+				cell11.setCellFormula("H"+(4+i)+"*I"+(4+i)+"");//派驻费
+				XSSFCell cell12 = row.getCell((short) 11);
+				cell12.setCellFormula("J"+(4+i)+"+K"+(4+i)+"");;//总金额计算
+			}
+			XSSFRow rowSum = sheet.getRow((short) list.size() + 6);
+			XSSFCell rSumc11 = rowSum.getCell((short) 10);
+			rSumc11.setCellValue("合计金额");
+			XSSFCellStyle style = workbook.createCellStyle();
+			style.setAlignment(HorizontalAlignment.CENTER);;//水平居中
+			style.setVerticalAlignment(VerticalAlignment.CENTER);//垂直居中
+//			XSSFDataFormat df = workbook.createDataFormat();  //此处设置数据格式
+//			style.setDataFormat(df.getFormat("#,#0.00"));
+			XSSFFont font = workbook.createFont();
+	        font.setColor(Font.COLOR_RED);//HSSFColor.VIOLET.index //字体颜色
+	        font.setFontName("宋体");
+	        font.setBold(true);
+	        font.setFontHeightInPoints((short)10);//设置字体大小
+			style.setFont(font);
+			XSSFCell rSumc12 = rowSum.getCell((short) 11);
+			rSumc12.setCellFormula("SUM(L4:L"+(list.size()+4-1)+")");
+			rSumc12.setCellStyle(style);
+			
+			
+			FileOutputStream out = null;
+			try {
+				out = new FileOutputStream(
+				new File(path.replace("模板", list.get(0).getCompany().getCname())));
+				workbook.write(out);
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				out.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 }

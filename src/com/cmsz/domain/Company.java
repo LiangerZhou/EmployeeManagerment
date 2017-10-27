@@ -21,8 +21,8 @@ public class Company implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer cid; //id
-	private String cname; //公司名称
-	private String cdesc; //公司备注
+	private String cname; //公司简称
+	private String cdesc; //公司全称
 	private String contract_name;//合同名称
 	private String contract_code;//合同编号
 	

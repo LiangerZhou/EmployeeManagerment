@@ -2,6 +2,7 @@ package com.cmsz.service;
 
 import java.util.List;
 
+import com.cmsz.domain.Employee;
 import com.cmsz.domain.PageBean;
 import com.cmsz.domain.Task;
 
@@ -21,7 +22,7 @@ public interface TaskService {
 
 	List<Task> findByProperties(String cpname);
 
-	List findAllProperties(String cpname);
+	List<Employee> findAllProperties(String cpname);
 
 
 }

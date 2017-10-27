@@ -2,6 +2,7 @@ package com.cmsz.dao;
 
 import java.util.List;
 
+import com.cmsz.domain.Employee;
 import com.cmsz.domain.Task;
 
 public interface TaskDao {
@@ -22,7 +23,6 @@ public interface TaskDao {
 
 	List<Task> findByProperties(String cpname);
 
-	@SuppressWarnings("rawtypes")
-	List findAllProperties(String cpname);
+	List<Employee> findAllProperties(String cpname);
 
 }

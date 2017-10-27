@@ -102,7 +102,7 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 	//通过action返回跳转的jsp
 	public String saveUI(){
 		List<Employee> list = employeeService.findAll();
-		ActionContext.getContext().getValueStack().set("list",list);
+		ActionContext.getContext().getSession().put("list", list);
 		return "saveUI";
 	}
 	
@@ -119,7 +119,6 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 	}
 	
 	public String updateTask() {
-		System.out.println(task.getTask_name().toString());
 		taskService.update(task);
 		return "updateSuccess";
 	}
@@ -146,12 +145,10 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		return null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public String exportMid() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String cpname = request.getParameter("cpname");
-		@SuppressWarnings("rawtypes")
-		List list = taskService.findAllProperties(cpname);//查询所有任务根据公司名，若为空就是查询所有的
+		List<Employee> list = taskService.findAllProperties(cpname);//查询所有任务根据公司名，若为空就是查询所有的
 		PoiExcel poiExcel = new PoiExcel();
 		String path;
 		if("".equals(cpname)||cpname.isEmpty()) {

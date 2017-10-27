@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head></head>
 <body>
-<table border="0" width="600px">
+<table border="0" width="95%">
 <tr>
 <td align="center" style="font-size:24px; color:#666">外援添加</td>
 </tr>
@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <br/>
 <!-- action对应一个action标签，id对应提交时的对应关系 -->
 <s:form id="saveForm" action="employee_save" method="post" namespace="/" theme="simple">
-	<table style="font-size:16px">
+	<table style="font-size:16px" align="center">
 		<tr>
 		  <td>员工姓名：</td>
 		  <td><s:textfield name="ename"/></td>
@@ -37,9 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 		<tr>
 		  <td>外援等级：</td>
-		  <td><s:select list="{'高级','中级','低级'}"  theme = "simple"  name="e_level" /></td>
+		  <td><s:select list="{'低级','中级','高级'}"  theme = "simple"  name="e_level" /></td>
 		  <td>在职状态：</td>
-		  <td><s:select list="{'在职','离职'}" name="on_off_duty"/></td>
+		  <td><s:select list="{'是','否'}" name="on_off_duty"/></td>
 		</tr>
 		<tr>
 		  <td>身份证号：</td>
@@ -56,6 +56,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 <tr>
 		  <td>所属公司：</td>
 		  <td><s:select name="company.cid" headerKey="" headerValue="--请选择--" list="#session.list" listKey="cid" listValue="cname"/></td> 
+		  <td>单价：</td>
+		  <td><s:textfield name="Price"></s:textfield></td>
 		 </tr>
 	</table>
 </s:form>

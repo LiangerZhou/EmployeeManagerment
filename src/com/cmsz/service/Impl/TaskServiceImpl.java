@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cmsz.dao.TaskDao;
+import com.cmsz.domain.Employee;
 import com.cmsz.domain.PageBean;
 import com.cmsz.domain.Task;
 import com.cmsz.service.TaskService;
@@ -66,14 +67,11 @@ public class TaskServiceImpl implements TaskService{
 
 	@Override
 	public List<Task> findByProperties(String cpname) {
-		// TODO Auto-generated method stub
 		return taskDao.findByProperties(cpname);
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
-	public List findAllProperties(String cpname) {
-		// TODO Auto-generated method stub
+	public List<Employee> findAllProperties(String cpname) {
 		return taskDao.findAllProperties(cpname);
 	}
 
