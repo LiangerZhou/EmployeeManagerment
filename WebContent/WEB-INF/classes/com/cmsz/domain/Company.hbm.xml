@@ -15,7 +15,7 @@
 			<property name="contract_code" column="contract_code" length="200"></property>
     		
     		<!-- 关联关系映射 -->
-    		<set name="employees" inverse="true" cascade="all" lazy="false"><!-- hibernate的懒加载要双方都禁止才可以实现 连表查询时，关联查询才能查出来 -->
+    		<set name="employees" cascade="all" lazy="false"><!-- hibernate的懒加载要双方都禁止才可以实现 连表查询时，关联查询才能查出来 -->
     			<key column="cno"></key>
     			<one-to-many class="com.cmsz.domain.Employee"></one-to-many>
     		</set>

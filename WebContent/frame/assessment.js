@@ -1,3 +1,6 @@
+
+
+
 function submitPage() {
 	
 		 var cpname = $("#status").val()
@@ -46,6 +49,21 @@ function exportMid() {
 	    },
 	    type: "post", 
 	    url: 'task_exportMid.action',
+	    success: function (data) {
+	    }
+	});
+}
+
+
+//合同台账导出
+function exportContract(){
+	$.ajax({
+	    dataType: "text",
+	    data: {
+	    	
+	    },
+	    type: "post", 
+	    url: 'task_exportContract.action',
 	    success: function (data) {
 	    }
 	});

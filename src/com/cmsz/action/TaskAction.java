@@ -1,6 +1,8 @@
 package com.cmsz.action;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -101,24 +103,32 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 	
 	//通过action返回跳转的jsp
 	public String saveUI(){
-		List<Employee> list = employeeService.findAll();
-		ActionContext.getContext().getSession().put("list", list);
+		List<Employee> elist = employeeService.findAll();
+		ActionContext.getContext().getSession().put("elist", elist);
 		return "saveUI";
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String addTask() {
+		Set<Employee> employee = new HashSet(employeeService.findByIds(task.getEmps().iterator().next().getEid().toString()));
+		task.setEmps(employee);
+		task.getEmps().iterator().next().setTask(task);
 		taskService.save(task);
 		return "addSuccess";
 	}
 	
 	public String editTask() {
 		task = taskService.edit(task.getTask_id());
-		List<Employee> list = employeeService.findAll();
-		ActionContext.getContext().getSession().put("list", list);
+		List<Employee> elist = employeeService.findAll();
+		ActionContext.getContext().getSession().put("elist", elist);
 		return "editSuccess";
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String updateTask() {
+		Set<Employee> employee = new HashSet(employeeService.findByIds(task.getEmps().iterator().next().getEid().toString())); 
+		task.setEmps(employee);
+		task.getEmps().iterator().next().setTask(task);
 		taskService.update(task);
 		return "updateSuccess";
 	}
@@ -127,7 +137,7 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		taskService.delete(task);
 		return "delSuccess";
 	}
-	
+//考核表导出	
 	public String exportAss() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String cpname = request.getParameter("cpname");
@@ -144,7 +154,7 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		}
 		return null;
 	}
-
+//中间表导出
 	public String exportMid() {
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String cpname = request.getParameter("cpname");
@@ -159,6 +169,13 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 			path = request.getSession().getServletContext().getRealPath("/")+"Templet\\3.付款凭证-中间表-维护类开发-测评业务线-纸质签字版反馈给综合室（各公司汇总总表） - 模板.xlsx";//获取存在项目中的模板的真实路径"
 			poiExcel.midExcel(list,path,cList);//各公司分表
 		}
+		return null;
+	}
+	
+//合同台账导出	
+	public String exportContract() {
+		
+		
 		return null;
 	}
 }
