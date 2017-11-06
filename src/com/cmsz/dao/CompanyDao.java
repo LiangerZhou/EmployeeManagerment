@@ -22,4 +22,6 @@ public interface CompanyDao {
 
 	List<Company> findByName(String cpname);
 
+	List<Object[]> findTaskEmp();
+
 }

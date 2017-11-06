@@ -183,4 +183,9 @@ public class CompanyServiceImpl implements CompanyService {
 		
 		return companyDao.findByName(cpname);
 	}
+
+	@Override
+	public List<Object[]> findTaskEmp() {
+		return companyDao.findTaskEmp();
+	}
 }

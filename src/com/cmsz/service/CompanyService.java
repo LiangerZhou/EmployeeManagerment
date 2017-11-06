@@ -25,4 +25,6 @@ public interface CompanyService {
 
 	List<Company> findByName(String cpname);
 
+	List<Object[]> findTaskEmp();
+
 }

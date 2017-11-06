@@ -75,7 +75,7 @@
 			<result name="editSuccess">/frame/editTask.jsp</result>
 			<result name="updateSuccess" type="redirect">task_findAll.action</result>
 			<result name="delSuccess" type="redirect">task_findAll.action</result>
-			<allowed-methods>saveUI,findAll,addTask,editTask,updateTask,delTask,assessment,findByCpname,exportAss,exportMid</allowed-methods><!-- struts2.5才要加 -->
+			<allowed-methods>saveUI,findAll,addTask,editTask,updateTask,delTask,assessment,findByCpname,exportAss,exportMid,exportContract</allowed-methods><!-- struts2.5才要加 -->
 		</action>
 	</package>   		
 </struts>

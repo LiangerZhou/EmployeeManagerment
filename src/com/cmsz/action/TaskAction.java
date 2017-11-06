@@ -175,7 +175,11 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 //合同台账导出	
 	public String exportContract() {
 		
-		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String path = request.getSession().getServletContext().getRealPath("/")+"Templet\\合同台账-订单接收表-模板-测评业务线.xlsx";//获取存在项目中的模板的真实路径"
+		List<Object[]> list = companyService.findTaskEmp();
+		PoiExcel poiExcel = new PoiExcel();
+		poiExcel.contract(list,path);
 		return null;
 	}
 }

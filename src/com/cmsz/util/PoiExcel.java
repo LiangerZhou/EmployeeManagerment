@@ -336,7 +336,7 @@ public class PoiExcel {
 				XSSFCell cell11 = row.getCell((short) 10);
 				cell11.setCellFormula("H"+(4+i)+"*I"+(4+i)+"");//派驻费
 				XSSFCell cell12 = row.getCell((short) 11);
-				cell12.setCellFormula("J"+(4+i)+"+K"+(4+i)+"");;//总金额计算
+				cell12.setCellFormula("J"+(4+i)+"+K"+(4+i)+"");//总金额计算
 			}
 			XSSFRow rowSum = sheet.getRow((short) list.size() + 6);
 			XSSFCell rSumc11 = rowSum.getCell((short) 10);
@@ -356,7 +356,6 @@ public class PoiExcel {
 			rSumc12.setCellFormula("SUM(L4:L"+(list.size()+4-1)+")");
 			rSumc12.setCellStyle(style);
 			
-			
 			FileOutputStream out = null;
 			try {
 				out = new FileOutputStream(
@@ -371,5 +370,57 @@ public class PoiExcel {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	
+	public void contract(List<Object[]> list, String path) {
+		XSSFWorkbook workbook;
+		try {
+			workbook = new XSSFWorkbook(new FileInputStream(path));
+			XSSFSheet sheet = workbook.getSheet("合同台账-订单接收表");//获取Sheet1工作表，一个excel称为工作簿，可包含多个工作表
+			for(int i=0;i<list.size();i++) {
+				Object[] ob = list.get(i);
+				
+				XSSFRow row = sheet.getRow((short)(2+i));
+				XSSFCell cell1 = row.getCell((short) 0);
+				cell1.setCellValue(i+1);
+				XSSFCell cell2 = row.getCell((short) 1);
+				cell2.setCellValue(ob[0].toString());
+				XSSFCell cell3 = row.getCell((short) 2);
+				cell3.setCellValue("维护费");
+				XSSFCell cell4 = row.getCell((short) 3);
+				cell4.setCellValue(ob[1].toString());
+				XSSFCell cell5 = row.getCell((short) 4);
+				cell5.setCellValue(ob[2].toString());
+				XSSFCell cell6 = row.getCell((short) 5);
+				cell6.setCellValue(ob[3].toString());
+				XSSFCell cell7 = row.getCell((short) 6);
+				cell7.setCellValue(ob[4].toString());
+				XSSFCell cell8 = row.getCell((short) 7);
+				cell8.setCellFormula(ob[5]+"*"+1.06);
+				XSSFCell cell9 = row.getCell((short) 8);
+				cell9.setCellValue(Double.parseDouble(ob[5].toString()));
+				XSSFCell cell10 = row.getCell((short) 9);
+				cell10.setCellValue("技术服务类合同");
+				XSSFCell cell11 = row.getCell((short) 10);
+				cell11.setCellValue("研发中心");
+				XSSFCell cell13 = row.getCell((short) 12);
+				cell13.setCellValue("生产系统");
+				XSSFCell cell14 = row.getCell((short) 13);
+				cell14.setCellValue("测评业务线");
+				
+			}
+				FileOutputStream out = null;
+				try {
+					out = new FileOutputStream(new File(path.replace("模板","月份")));
+					workbook.write(out);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					out.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 }
