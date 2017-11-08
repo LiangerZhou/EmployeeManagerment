@@ -263,7 +263,7 @@ public class PoiExcel {
 					XSSFCell cell11 = row.getCell((short) 10);
 					cell11.setCellFormula("H"+(3+i)+"*I"+(3+i)+"");//派驻费
 					XSSFCell cell12 = row.getCell((short) 11);
-					cell12.setCellFormula("J"+(4+i)+"+K"+(4+i)+"");//总金额计算
+					cell12.setCellFormula("J"+(3+i)+"+K"+(3+i)+"");//总金额计算
 					XSSFCell cell13 = row.getCell((short) 12);
 					cell13.setCellValue(list.get(i).getTask().getRemark());//外援备注，什么时候入职离职 请假等
 					XSSFCell cell14 = row.getCell((short) 13);

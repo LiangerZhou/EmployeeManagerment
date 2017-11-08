@@ -38,8 +38,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 		  <td>外援等级：</td>
 		  <td><s:select list="{'低级','中级','高级'}"  theme = "simple"  name="e_level" /></td>
-		  <td>在职状态：</td>
-		  <td><s:select list="{'是','否'}" name="on_off_duty"/></td>
+		  <td>是否离岸：</td>
+		  <td><s:select list="{'否','是'}" name="on_off_duty"/></td>
 		</tr>
 		<tr>
 		  <td>身份证号：</td>

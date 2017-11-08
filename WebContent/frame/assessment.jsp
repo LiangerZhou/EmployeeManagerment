@@ -35,7 +35,7 @@ thead {
 	<br />
 	<div>
 	 &nbsp;&nbsp;<s:select id="status" name="company.cid" onchange="submitPage()" headerKey="" headerValue="--全部--" list="#session.clist" listKey="cid" listValue="cname"/>
-	 &nbsp;&nbsp;<input type="button" onclick="exportAss()" value="考勤表导出">
+	 &nbsp;&nbsp;<input type="button" onclick="exportAss()" value="考核表导出">
 	 &nbsp;&nbsp;<input type="button" onclick="exportMid()" value="中间表导出">
 	 &nbsp;&nbsp;<input type="button" onclick="exportContract()" value="合同台账导出">
 	</div>

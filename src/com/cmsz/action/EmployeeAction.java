@@ -116,7 +116,7 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 		String workdays = request.getParameter("Alldays");//工作日列表，逗号分隔形式为yyyy/MM/dd
 		String[] workArr = workdays.split(",");
 		List<Employee> eList = employeeService.findByIds(request.getParameter("eids"));////选中的员工id列表，逗号分隔
-		String path =request.getSession().getServletContext().getRealPath("/")+"Templet\\新合同外援考勤表-模板.xls";//获取存在项目中的模板的真实路径
+		String path =request.getSession().getServletContext().getRealPath("/")+"Templet\\新合同外援考勤表-模板.xlsx";//获取存在项目中的模板的真实路径
 		PoiExcel poiExcel = new PoiExcel();
 		poiExcel.attendExcel(workArr, eList,path);
 		return "exportSuccess";
