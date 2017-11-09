@@ -39,7 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		public PageBean<Employee> findAll(int currentPage) {
 			PageBean<Employee> pageBean = new PageBean<Employee>();
 			//每页显示的数量
-			int pageSize = 5;
+			int pageSize = 10;
 			//这个方法用于查找出所有的员工的数量
 			int totalSize = employeeDao.findAllCount(currentPage);
 			int pageCount = (totalSize%pageSize)==0?(totalSize/pageSize):(totalSize/pageSize)+1;

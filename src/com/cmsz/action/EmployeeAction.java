@@ -1,8 +1,10 @@
 package com.cmsz.action;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -113,12 +115,14 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	//导出excel考勤表
 	public String exportExcel() {
 		HttpServletRequest request = ServletActionContext.getRequest();
+		String startday = request.getParameter("stime");
+		String endday = request.getParameter("dtime");
 		String workdays = request.getParameter("Alldays");//工作日列表，逗号分隔形式为yyyy/MM/dd
 		String[] workArr = workdays.split(",");
 		List<Employee> eList = employeeService.findByIds(request.getParameter("eids"));////选中的员工id列表，逗号分隔
 		String path =request.getSession().getServletContext().getRealPath("/")+"Templet\\新合同外援考勤表-模板.xlsx";//获取存在项目中的模板的真实路径
 		PoiExcel poiExcel = new PoiExcel();
-		poiExcel.attendExcel(workArr, eList,path);
+		poiExcel.attendExcel(startday,endday,workArr, eList,path);
 		return "exportSuccess";
 	}
 

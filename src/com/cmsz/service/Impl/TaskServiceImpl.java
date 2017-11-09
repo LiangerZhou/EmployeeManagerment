@@ -24,7 +24,7 @@ public class TaskServiceImpl implements TaskService{
 	public PageBean<Task> findByPage(int currentPage) {
 		PageBean<Task> pageBean = new PageBean<Task>();
 		//每页显示的数量
-		int pageSize = 5;
+		int pageSize = 10;
 		//这个方法用于查找出所有的员工的数量
 		int totalSize = taskDao.findAllCount(currentPage);
 		int pageCount = (totalSize%pageSize)==0?(totalSize/pageSize):(totalSize/pageSize)+1;

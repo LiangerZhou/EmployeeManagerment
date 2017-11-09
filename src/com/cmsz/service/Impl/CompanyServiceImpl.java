@@ -37,7 +37,7 @@ public class CompanyServiceImpl implements CompanyService {
 	@Override
 	public PageBean<Company> findByPage(int currentPage) {
 		PageBean<Company> pageBean = new PageBean<Company>();
-		int pageSize = 5;
+		int pageSize = 10;
 		//从数据库获得总共的条数
 		int totalSize = companyDao.findCount();
 		int pageCount = (totalSize%pageSize)==0?(totalSize/pageSize):(totalSize/pageSize)+1;

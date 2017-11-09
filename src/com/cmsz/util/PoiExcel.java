@@ -2,7 +2,6 @@ package com.cmsz.util;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -33,51 +32,39 @@ public class PoiExcel {
 	 * 2、传入所有的被选员工对象
 	 * 3、传入模板的真实路径
 	 */
-	@SuppressWarnings("resource")
-	public void attendExcel(String[] workArray, List<Employee> list, String path) {
-		String year = workArray[workArray.length - 1].split("/")[0];
-		String month = workArray[workArray.length - 1].split("/")[1];
-		for (Employee elist : list) {
+	public void attendExcel(String startday, String endday, String[] workArray, List<Employee> list, String path) {
+		String[] yms = endday.split("-");
+		XSSFWorkbook workbook;
 			try {
-				XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream(path));
-				XSSFSheet sheet = workbook.getSheet("Sheet1");//获取Sheet1工作表，一个excel称为工作簿，可包含多个工作表
-
+				workbook = new XSSFWorkbook(new FileInputStream(path));
+		for (int j = 0; j<list.size();j++) {
+			
+				XSSFSheet sheet = workbook.getSheet("Sheet"+(j+1));//获取Sheet工作表，一个excel称为工作簿，可包含多个工作表
 				XSSFRow row2 = sheet.getRow((short) 1);
 				XSSFCell r2c2 = row2.getCell((short) 1);
-				r2c2.setCellValue("注：" + year + "年" + month + "月周期为：" + workArray[0].replace("/", "-") + "至"
-						+ workArray[workArray.length - 1].replace("/", "-") + "（共计" + workArray.length + "天工作日）");
+				r2c2.setCellValue("注：" + yms[0] + "年" + yms[1] + "月周期为：" + startday + "至"
+						+ endday + "（共计" + workArray.length + "天工作日）");
 
 				XSSFRow row3 = sheet.getRow((short) 2);
 				XSSFCell r3c1 = row3.getCell((short) 0);
-				r3c1.setCellValue("归属预算名称：" + elist.getTask().getBudget_name());//此处要加控制，如果未分配任务，则不考勤
+				r3c1.setCellValue("归属预算名称：" + list.get(j).getTask().getBudget_name());//此处要加控制，如果未分配任务，则不考勤
 
 				for (int i = 4; i < workArray.length + 4; i++) {
 					XSSFRow row = sheet.getRow((short) i);//获取第i+1行
 					XSSFCell cellr1 = row.getCell((short) 0);//获取第1列
 					cellr1.setCellValue(workArray[i - 4]);
 					XSSFCell cellr2 = row.getCell((short) 1);
-					cellr2.setCellValue(elist.getEname());
+					cellr2.setCellValue(list.get(j).getEname());
 					XSSFCell cellr3 = row.getCell((short) 2);
-					cellr3.setCellValue(elist.getCompany().getCname());
-					System.out.println(cellr1.getStringCellValue());
+					cellr3.setCellValue(list.get(j).getCompany().getCname());
 				}
-
-				FileOutputStream out = null;
-				try {
-					out = new FileOutputStream(
-							new File(path.replace("模板", elist.getEname())));
-					workbook.write(out);
-				} catch (IOException e) {
-					e.printStackTrace();
-				} finally {
-						out.close();
-				}
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
+		}
+		FileOutputStream out = null;
+		out = new FileOutputStream(new File(path.replace("模板", yms[0] + "年" + yms[1] + "月"+"-共计" + workArray.length + "天")));
+		workbook.write(out);
+		out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	/*

@@ -28,6 +28,7 @@
 		var stime = $("#begintime").val();
 		var dtime = $("#endtime").val();
 		var obj =  $("input[name='ckb']");
+		var workdays = getAll(stime,dtime)
 		for(var i=0;i<obj.length;i++){
 			if(obj[i].checked){
 				str+=obj[i].value+',';
@@ -39,7 +40,7 @@
 	        	eids : str.toString(),
 	        	stime: stime,
 				dtime: dtime,
-				Alldays: getAll(stime,dtime),
+				Alldays: workdays,
 	        },
 	        type: "post", 
 	        url: 'employee_exportExcel.action',
