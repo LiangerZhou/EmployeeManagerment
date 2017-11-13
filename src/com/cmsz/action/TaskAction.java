@@ -84,20 +84,6 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String cpname = request.getParameter("cpname");
 		list = taskService.findByProperties(cpname);
-		System.out.println(list.size());
-		
-		 //将list转化成JSON对象  
-/*        JSONArray jsonArray = JSONArray.fromObject(list);  
-        HttpServletResponse response = (HttpServletResponse) ActionContext.getContext().get(ServletActionContext.HTTP_RESPONSE);  
-        response.setCharacterEncoding("UTF-8");   
-        try {
-			response.getWriter().print(jsonArray);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} */
-		
-//		ActionContext.getContext().getValueStack().push(list);
 		return "assessmentByComp";
 	}
 	

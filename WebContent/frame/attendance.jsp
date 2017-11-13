@@ -62,11 +62,10 @@ thead {
 		<thead>
 			<tr style="background: #CCCCCC;text-align: center;">
 			<th style="width: 5%;height: 10px;"><input type="checkbox" name="ckb_head" id="ckb_head"/></th>
-				<th width="10%">员工姓名</th>
-				<th width="10%">外援等级</th>
-				<th width="35%">所属公司</th>
+				<th width="30%">员工姓名</th>
+				<th width="20%">外援等级</th>
+				<th width="45%">所属公司</th>
 				
-				<th width="5%">导出</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -78,9 +77,6 @@ thead {
 					
 					<td align="center"><s:property value="#e.company.cname" /></td>
 					
-					<td align="center"><a href="${pageContext.request.contextPath}/employee_exportExcel.action?eid=<s:property value="#e.eid"/>">
-							<img src="<%=basePath%>images/导出Excel.png" /></a>
-					</td>
 				</tr>
 			</s:iterator>
 		</tbody>
