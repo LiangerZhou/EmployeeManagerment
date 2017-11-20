@@ -26,9 +26,8 @@
 		<property name="workType" length="50" column="workType"></property>
 		<property name="remark" length="50" column="remark"></property>
 		<!-- 关联关系映射 -->
-    	<!-- <one-to-many name="employees"  lazy="false" fetch="join" class="com.cmsz.domain.Employee" column="tno"></one-to-many> -->
     	
-     	<set name="emps" inverse="true" cascade="all" lazy="false">
+     	<set name="emps" cascade="all" lazy="false">
     			<key column="tno"></key>
     			<one-to-many class="com.cmsz.domain.Employee"></one-to-many>
     	</set> 

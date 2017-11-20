@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib prefix="sx" uri="/struts-dojo-tags" %>
 <!DOCTYPE html>
 <%
 String path = request.getContextPath();
@@ -32,13 +33,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <td>任务名称：</td>
 		  <td><s:textfield name="task_name"/></td>
 		  <td>任务开始时间：</td>
-		  <td><s:textfield name="task_creTime"/></td>
+		  <td><input type="date" format="yyyy/MM/dd" name="task_creTime"/></td>
 		  <td>计划完成时间：</td>
-		  <td><s:textfield name="task_endTime"/></td>
+		  <td><input type="date" format="yyyy/MM/dd" name="task_endTime"/></td>
 		</tr>
 		<tr>
 		  <td>实际完成时间：</td>
-		  <td><s:textfield name="real_endTime"/></td>
+		  <td><input type="date" format="yyyy/MM/dd" name="real_endTime"/></td>
 		  <td>工作量：</td>
 		  <td><s:textfield name="workdays" /></td>
 <%-- 		  <td>工作量占比：</td>
