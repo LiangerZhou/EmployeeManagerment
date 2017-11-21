@@ -31,9 +31,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 		<tr>
 		  <td>入职日期：</td>
-		  <td><s:textfield name="joinDate"/></td>
+		  <td><input type="date" name="joinDate"/></td>
 		  <td>离职日期：</td>
-		  <td><s:textfield name="leftDate"/></td>
+		  <td><input type="date" name="leftDate"/></td>
 		</tr>
 		<tr>
 		  <td>外援等级：</td>

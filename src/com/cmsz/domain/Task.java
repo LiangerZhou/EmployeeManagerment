@@ -1,7 +1,7 @@
 package com.cmsz.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 

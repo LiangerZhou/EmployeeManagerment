@@ -34,17 +34,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <td>任务名称：</td>
 		  <td><s:textfield name="task_name" value="%{model.task_name}"/></td>
 		  <td>任务开始时间：</td>
-		  <td><sx:datetimepicker displayFormat="yyyy/MM/dd" name="task_creTime" value="%{model.task_creTime}"/></td>
+		  <td><s:textfield format="yyyy-MM-dd" name="task_creTime" value="%{model.task_creTime}"/></td>
 		  <td>计划完成时间：</td>
-		  <td><sx:datetimepicker displayFormat="yyyy/MM/dd" name="task_endTime" value="%{model.task_endTime}"/></td>
+		  <td><s:textfield name="task_endTime" value="%{model.task_endTime}"/></td>
 		</tr>
 		<tr>
 		  <td>实际完成时间：</td>
-		  <td><sx:datetimepicker displayFormat="yyyy/MM/dd" name="real_endTime" value="%{model.real_endTime}"/></td>
+		  <td><s:textfield name="real_endTime" value="%{model.real_endTime}"/></td>
 		  <td>工作量：</td>
 		  <td><s:textfield name="workdays"  value="%{model.workdays}"/></td>
-<%-- 		  <td>工作量占比：</td>
-		  <td><s:textfield  name="workratio" value="%{model.workratio}"/></td> --%>
 		</tr>
 		<tr>
 		  <td>工作效率：</td>
@@ -57,8 +55,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 <tr>
 		  <td>工作任务考核得分：</td>
 		  <td><s:textfield name="work_score" value="%{model.work_score}"/></td>
-<%-- 		  <td>工作任务考核得分折算：</td>
-		  <td><s:textfield name="convert_score" value="%{model.convert_score}"/></td> --%>
 		  <td>归属预算名称：</td>
 		  <td><s:textfield name="budget_name" value="%{model.budget_name}"/></td>
 		 </tr>
@@ -74,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  <td>工作类型：</td>
 		  <td><s:textfield name="workType" value="%{model.workType}"/></td> 
 		  <td>备注：</td>
-		  <td><s:textarea name="remark" value="%{model.remark}"/></td> 
+		  <td><s:textfield name="remark" value="%{model.remark}"/></td> 
 		</tr>
 	</table>
 </s:form>
