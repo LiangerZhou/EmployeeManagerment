@@ -11,8 +11,8 @@
     		
     		<property name="ename" column="ename" length="20"></property>
     		<property name="sex" column="sex" length="10"></property>
-    		<property name="joinDate" column="joinDate"></property>
-    		<property name="leftDate" column="leftDate"></property>
+    		<property name="joinDate" type="date" column="joinDate"></property>
+    		<property name="leftDate" type="date" column="leftDate"></property>
     		<property name="e_level" column="e_level" length="20"></property>
     		<property name="on_off_duty" column="on_off_duty" length="20"></property>
     		<property name="idCard" column="idCard" length="18"></property>
