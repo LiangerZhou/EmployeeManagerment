@@ -67,7 +67,7 @@ public class CompanyDaoImpl extends HibernateDaoSupport implements CompanyDao {
 	@SuppressWarnings({ "unchecked"})
 	@Override
 	public List<Object[]> findTaskEmp() {
-		String hql = "select c.contract_code,t.budget_name,c.contract_name,c.cdesc,sum(t.workdays),sum(t.workdays*e.Price) from Task t,Employee e,Company c where t.task_id = e.task and e.company = c.cid group by c.cid";  
+		String hql = "select c.contract_code,t.budget_name,c.contract_name,c.cdesc,sum(t.workdays),sum(t.workdays*e.Price) from Task t,Employee e,Company c where t.task_id = e.task and e.company = c.cid group by c.cid,t.budget_name";  
 		List<Object[]> list = (List<Object[]>) this.getHibernateTemplate().find(hql);
 //		Class.forName("com.mysql.jdbc.Driver");
 //		Connection conn = DriverManager.getConnection("127.0.0.1", "root", "root");

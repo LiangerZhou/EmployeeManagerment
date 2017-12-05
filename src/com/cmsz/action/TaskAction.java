@@ -131,7 +131,7 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 		PoiExcel poiExcel = new PoiExcel();
 		String path;
 		if("".equals(cpname)||cpname.isEmpty()) {
-		    path = request.getSession().getServletContext().getRealPath("/")+"Templet\\2.付款凭证-任务考核表-电子版反馈给综合室.xlsx";
+		    path = request.getSession().getServletContext().getRealPath("/")+"Templet\\2.付款凭证-任务考核表-电子版反馈给综合室-模板.xlsx";
 			poiExcel.assessAllExcel(list, path);
 		}else {
 			List<Company> cList = companyService.findByName(cpname);

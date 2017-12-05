@@ -166,36 +166,57 @@ public class PoiExcel {
 				for(int i = 0; i<list.size(); i++) {
 					XSSFRow row = sheet.getRow((short) i+2);//获取第i+3行
 					XSSFCell cellr2 = row.getCell((short) 1);//获取第2列
-					cellr2.setCellValue(list.get(i).getTask_name());
+					cellr2.setCellValue(list.get(i).getBudget_name());
 					XSSFCell cellr3 = row.getCell((short) 2);
-					cellr3.setCellValue(list.get(i).getTask_creTime());
+					cellr3.setCellValue(list.get(i).getTask_name());
 					XSSFCell cellr4 = row.getCell((short) 3);
-					cellr4.setCellValue(list.get(i).getTask_endTime());
+					cellr4.setCellValue(list.get(i).getTask_creTime());
 					XSSFCell cellr5 = row.getCell((short) 4);
-					cellr5.setCellValue(list.get(i).getReal_endTime());
+					cellr5.setCellValue(list.get(i).getTask_endTime());
 					XSSFCell cellr6 = row.getCell((short) 5);
-					cellr6.setCellValue(list.get(i).getWorkdays());
+					cellr6.setCellValue(list.get(i).getReal_endTime());
 					XSSFCell cellr7 = row.getCell((short) 6);
-					cellr7.setCellFormula("F"+(i+4)+"/SUM(F4:F"+(list.size()+4)+")");
+					cellr7.setCellValue(list.get(i).getWorkdays());
 					XSSFCell cellr8 = row.getCell((short) 7);
-					cellr8.setCellValue(list.get(i).getWork_efficiency());
+					cellr8.setCellFormula("G"+(i+3)+"/SUM(G3:G"+(list.size()+2)+")");
 					XSSFCell cellr9 = row.getCell((short) 8);
-					cellr9.setCellValue(list.get(i).getWork_quality());
+					cellr9.setCellValue(list.get(i).getWork_efficiency());
 					XSSFCell cellr10 = row.getCell((short) 9);
-					cellr10.setCellValue(list.get(i).getWork_norm());
+					cellr10.setCellValue(list.get(i).getWork_quality());
 					XSSFCell cellr11 = row.getCell((short) 10);
-					cellr11.setCellValue(list.get(i).getWork_score());
+					cellr11.setCellValue(list.get(i).getWork_norm());
 					XSSFCell cellr12 = row.getCell((short) 11);
-					cellr12.setCellFormula("G"+(i+4)+"*K"+(i+4)+"");
+					cellr12.setCellValue(list.get(i).getWork_score());
 					XSSFCell cellr13 = row.getCell((short) 12);
-					cellr13.setCellValue(list.get(i).getCharge_man());
+					cellr13.setCellFormula("H"+(i+3)+"*L"+(i+3)+"");
 					XSSFCell cellr14 = row.getCell((short) 13);
-					cellr14.setCellValue(list.get(i).getRemark());
+					cellr14.setCellValue(list.get(i).getCharge_man());
+					XSSFCell cellr15 = row.getCell((short) 14);
+					cellr15.setCellValue(list.get(i).getRemark());
+					XSSFCell cellr16 = row.getCell((short) 15);
+//					cellr16.setCellValue(list.get(i).getEmps().iterator().next().getCompany().getCname());
+					XSSFCell cellr17 = row.getCell((short) 16);
+					cellr17.setCellValue(list.get(i).getWorkType());
 				}
-/*				XSSFRow rown = sheet.getRow((short) list.size() + 2);
-				XSSFCell cellr12 = rown.getCell((short) 11);//在最后一个设置总计
-				cellr12.setCellType(XSSFCell.CELL_TYPE_FORMULA);
-				cellr12.setCellFormula("SUM(M2,M"+list.size()+2+"");*/
+				
+				XSSFRow rowSum = sheet.getRow((short) list.size()+2);
+				XSSFCell rSumc11 = rowSum.getCell((short) 11);
+				rSumc11.setCellValue("总计");
+				XSSFCellStyle style = workbook.createCellStyle();
+				style.setAlignment(HorizontalAlignment.CENTER);;//水平居中
+				style.setVerticalAlignment(VerticalAlignment.CENTER);//垂直居中
+				XSSFDataFormat df = workbook.createDataFormat();  //此处设置数据格式
+				style.setDataFormat(df.getFormat("#,#0.00"));
+				XSSFFont font = workbook.createFont();
+		        font.setColor(Font.COLOR_RED);//HSSFColor.VIOLET.index //字体颜色
+		        font.setFontName("宋体");
+		        font.setBold(true);
+		        font.setFontHeightInPoints((short)10);//设置字体大小
+				style.setFont(font);
+				XSSFCell rSumc12 = rowSum.getCell((short) 12);
+				rSumc12.setCellFormula("SUM(M3:M"+(list.size()+2)+")");
+				rSumc12.setCellStyle(style);
+				
 				FileOutputStream out = null;
 				try {
 					out = new FileOutputStream(
