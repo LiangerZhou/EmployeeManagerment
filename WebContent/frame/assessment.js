@@ -1,6 +1,4 @@
 
-
-
 function submitPage() {
 	
 		 var cpname = $("#status").val()
