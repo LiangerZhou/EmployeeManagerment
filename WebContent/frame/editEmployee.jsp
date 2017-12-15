@@ -26,46 +26,58 @@
 	<br />
 	<br />
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
-	<s:form id="saveForm" action="employee_update" method="post" namespace="/" theme="simple">
+	<s:form id="saveForm" action="employee_update" method="post"
+		namespace="/" theme="simple">
 		<s:hidden name="eid" value="%{model.eid}"></s:hidden>
 		<table style="font-size: 16px" align="center">
 			<tr>
 				<td>员工姓名：</td>
-				<td><s:textfield name="ename" value="%{model.ename}"/></td>
+				<td><s:textfield name="ename" value="%{model.ename}" /></td>
 				<td>性别：</td>
-				<td><s:radio list="{'男','女'}" name="sex" value="%{model.sex}"/></td>
+				<td><s:radio list="{'男','女'}" name="sex" value="%{model.sex}" /></td>
 			</tr>
 			<tr>
 				<td>入职日期：</td>
-				<td><s:textfield name="joinDate" format="yyyy-MM-dd" value="%{model.joinDate}"/></td>
+				<td><s:textfield name="joinDate" format="yyyy-MM-dd"
+						value="%{model.joinDate}" /></td>
 				<td>离职日期：</td>
-				<td><s:textfield name="leftDate" format="yyyy-MM-dd" value="%{model.leftDate}"/></td>
+				<td><s:textfield name="leftDate" format="yyyy-MM-dd"
+						value="%{model.leftDate}" /></td>
 			</tr>
 			<tr>
 				<td>外援等级：</td>
 				<td><s:select list="{'低级','中级','高级'}" theme="simple"
-						name="e_level" value="%{model.e_level}"/></td>
+						name="e_level" value="%{model.e_level}" /></td>
 				<td>在职状态：</td>
-				<td><s:select list="{'是','否'}" name="on_off_duty" value="%{model.on_off_duty}"/></td>
+				<td><s:select list="{'是','否'}" name="on_off_duty"
+						value="%{model.on_off_duty}" /></td>
 			</tr>
 			<tr>
 				<td>身份证号：</td>
-				<td><s:textfield name="idCard" value="%{model.idCard}"/></td>
+				<td><s:textfield name="idCard" value="%{model.idCard}" /></td>
 				<td>工作地点：</td>
-				<td><s:textfield name="workplace" value="%{model.workplace}"/></td>
+				<td><s:textfield name="workplace" value="%{model.workplace}" /></td>
 			</tr>
 			<tr>
 				<td>网络账号：</td>
-				<td><s:textfield name="Net_account" value="%{model.Net_account}"></s:textfield></td>
+				<td><s:textfield name="Net_account"
+						value="%{model.Net_account}"></s:textfield></td>
 				<td>网络角色：</td>
 				<td><s:textfield name="Net_role" value="%{model.Net_role}"></s:textfield></td>
 			</tr>
 			<tr>
 				<td>所属公司：</td>
-				<td><s:select name="company.cid" value="%{model.company.cid}" headerKey=""
-						headerValue="--请选择--" list="#session.list" listKey="cid" listValue="cname" /></td>
+				<td><s:select name="company.cid" value="%{model.company.cid}"
+						headerKey="" headerValue="--请选择--" list="#session.list"
+						listKey="cid" listValue="cname" /></td>
 				<td>单价：</td>
-		  		<td><s:textfield name="Price" value="%{model.Price}"></s:textfield></td>
+				<td><s:textfield name="Price" value="%{model.Price}"></s:textfield></td>
+			</tr>
+			<tr>
+				<td>所属任务：</td>
+				<td><s:select name="task.task_id" value="%{model.task.task_id}"
+						headerKey="" headerValue="--请选择--" list="#session.tList"
+						listKey="task_id" listValue="task_name" /></td>
 			</tr>
 		</table>
 	</s:form>

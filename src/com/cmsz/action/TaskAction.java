@@ -96,25 +96,25 @@ public class TaskAction extends ActionSupport implements ModelDriven<Task>{
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String addTask() {
-		Set<Employee> employee = new HashSet(employeeService.findByIds(task.getEmps().iterator().next().getEid().toString()));
-		task.setEmps(employee);
-		task.getEmps().iterator().next().setTask(task);
+//		Set<Employee> employee = new HashSet(employeeService.findByIds(task.getEmps().iterator().next().getEid().toString()));
+//		task.setEmps(employee);
+//		task.getEmps().iterator().next().setTask(task);
 		taskService.save(task);
 		return "addSuccess";
 	}
 	
 	public String editTask() {
 		task = taskService.edit(task.getTask_id());
-		List<Employee> elist = employeeService.findAll();
-		ActionContext.getContext().getSession().put("elist", elist);
+/*		List<Employee> elist = employeeService.findAll();
+		ActionContext.getContext().getSession().put("elist", elist);*/
 		return "editSuccess";
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public String updateTask() {
-		Set<Employee> employee = new HashSet(employeeService.findByIds(task.getEmps().iterator().next().getEid().toString())); 
-		task.setEmps(employee);
-		task.getEmps().iterator().next().setTask(task);
+//		Set<Employee> employee = new HashSet(employeeService.findByIds(task.getEmps().iterator().next().getEid().toString())); 
+//		task.setEmps(employee);
+//		task.getEmps().iterator().next().setTask(task);
 		taskService.update(task);
 		return "updateSuccess";
 	}

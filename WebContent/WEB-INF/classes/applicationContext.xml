@@ -31,7 +31,7 @@
         <bean id="employeeAction" class="com.cmsz.action.EmployeeAction" scope="prototype">
         	<property name="employeeService" ref="employeeService"></property>
         	<property name="companyService" ref="companyService"></property>
-        	<!-- <property name="taskService" ref="taskService"></property> -->
+        	<property name="taskService" ref="taskService"></property>
         </bean>
         <!-- 配置Service的类 -->
 		<bean id="employeeService" class="com.cmsz.service.Impl.EmployeeServiceImpl">

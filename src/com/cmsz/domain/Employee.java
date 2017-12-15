@@ -33,6 +33,7 @@ public class Employee implements Serializable{
 	private Integer Price;//单价
 	//所属公司
 	private Company company;
+	
 	//所属任务
 	private Task task;
 

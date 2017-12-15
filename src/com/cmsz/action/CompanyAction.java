@@ -76,8 +76,8 @@ public class CompanyAction extends ActionSupport implements ModelDriven<Company>
 		return "updateSuccess";
 	}
 	public String delete(){
-		Company dep = companyService.editById(company.getCid());
-		companyService.delete(dep);
+//		Company dep = companyService.editById(company.getCid());
+		companyService.delete(company);
 		return "deleteSuccess";
 	}
 	public String exportExcel() {

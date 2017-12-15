@@ -139,7 +139,7 @@ public class Task implements Serializable{
 		return remark;
 	}
 	public void setRemark(String remark) {
-		this.remark = remark;
+		this.remark = "维护类开发";//此处以后要改，暂时先这样写死，为了减少页面修改工作量
 	}
 	public Set<Employee> getEmps() {
 		return emps;

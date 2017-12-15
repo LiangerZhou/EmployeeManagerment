@@ -27,7 +27,7 @@
 		<property name="remark" length="50" column="remark"></property>
 		<!-- 关联关系映射 -->
     	
-     	<set name="emps" cascade="all" lazy="false">
+     	<set name="emps" cascade="all" inverse="false" lazy="false">
     			<key column="tno"></key>
     			<one-to-many class="com.cmsz.domain.Employee"></one-to-many>
     	</set> 

@@ -9,8 +9,10 @@ import org.apache.struts2.ServletActionContext;
 import com.cmsz.domain.Company;
 import com.cmsz.domain.Employee;
 import com.cmsz.domain.PageBean;
+import com.cmsz.domain.Task;
 import com.cmsz.service.CompanyService;
 import com.cmsz.service.EmployeeService;
+import com.cmsz.service.TaskService;
 import com.cmsz.util.PoiExcel;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -53,7 +55,12 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 	private EmployeeService employeeService;
 	//spring注入部门管理的service
 	private CompanyService companyService;
+	//spring注入任务的service
+	private TaskService taskService;
 	
+	public void setTaskService(TaskService taskService) {
+		this.taskService = taskService;
+	}
 	public void setCompanyService(CompanyService companyService) {
 		this.companyService = companyService;
 	}
@@ -90,6 +97,8 @@ public class EmployeeAction extends ActionSupport implements ModelDriven<Employe
 		employee = employeeService.edit(employee.getEid());
 		List<Company> list = companyService.findAll();
 		ActionContext.getContext().getSession().put("list", list);
+		List<Task> tList = taskService.findAll();
+		ActionContext.getContext().getSession().put("tList", tList);
 		return "editSuccess";
 	}
 	//根据姓名查找
