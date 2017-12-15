@@ -44,6 +44,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 		  <td>身份证号：</td>
 		  <td><s:textfield name="idCard"/></td>
+		  <td>电话：</td>
+		  <td><s:textfield name="telephone" value="%{model.telephone}" /></td>
 		  <td>工作地点：</td>
 		  <td><s:textfield name="workplace"/></td>
 		 </tr>

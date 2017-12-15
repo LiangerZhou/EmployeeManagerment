@@ -20,6 +20,7 @@
     		<property name="Net_account" column="Net_account" length="20"></property>
     		<property name="Net_role" column="Net_role" length="20"></property>
     		<property name="Price" column="Price" length="20"></property>
+    		<property name="telephone" column="telephone" length="20" ></property>
     		
     		<!-- 关联关系映射 -->
     		<many-to-one name="company"  lazy="false" fetch="join" class="com.cmsz.domain.Company" column="cno"></many-to-one>   		

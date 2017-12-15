@@ -27,6 +27,7 @@ public class Employee implements Serializable{
 	private String e_level; //外援等级
 	private String on_off_duty; //在职状态
 	private String idCard; //身份证号
+	private String telephone;//手机号
 	private String workplace; //工作地点
 	private String Net_account; //网络账号
 	private String Net_role; //网络角色
@@ -147,6 +148,14 @@ public class Employee implements Serializable{
 
 	public void setPrice(Integer price) {
 		Price = price;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 
 }
