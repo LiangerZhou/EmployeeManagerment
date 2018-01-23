@@ -39,7 +39,7 @@ thead {
 				<th width="8%">入职日期</th>
 				<th width="8%">离职时间</th>
 				<th width="5%">外援等级</th>
-				<th width="5%">在职状态</th>
+				<th width="5%">是否离岸</th>
 				<th width="5%">身份证号</th>
 				<th width="5%">工作地点</th>
 				<th width="5%">网络账号</th>

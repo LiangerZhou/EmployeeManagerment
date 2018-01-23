@@ -1,6 +1,5 @@
 package com.cmsz.service;
 
-import java.io.InputStream;
 import java.util.List;
 
 import com.cmsz.domain.Employee;
@@ -19,12 +18,12 @@ public interface EmployeeService{
 
 	void delete(Employee employee);
 
-	InputStream exportExcel();
+//	InputStream exportExcel();
 
 	List<Employee> findAll();
 
 	List<Employee> findByName(String findname);
 	
 	List<Employee> findByIds(String eids);
-
+	
 }

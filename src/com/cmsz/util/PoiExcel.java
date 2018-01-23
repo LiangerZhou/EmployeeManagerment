@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Font;
@@ -17,6 +18,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.cmsz.dao.EmployeeDao;
+import com.cmsz.dao.Impl.EmployeeDaoImpl;
 import com.cmsz.domain.Company;
 import com.cmsz.domain.Employee;
 import com.cmsz.domain.Task;
@@ -80,7 +83,9 @@ public class PoiExcel {
 			XSSFSheet sheet = workbook.getSheet("Sheet1");//获取Sheet1工作表，一个excel称为工作簿，可包含多个工作表
 			XSSFRow row1 = sheet.getRow((short) 0);
 			XSSFCell r1c1 = row1.getCell((short) 0);
-			r1c1.setCellValue(cList.get(0).getCdesc()+"合作伙伴技术服务工作任务考核-" + "2017" + "年" + "6" + "月-内部汇总");//要改
+			int year = Calendar.getInstance().get(Calendar.YEAR);
+			int month = 1 + Calendar.getInstance().get(Calendar.MONTH);
+			r1c1.setCellValue(cList.get(0).getCdesc()+"合作伙伴技术服务工作任务考核-" + year + "年" + month + "月-内部汇总");//要改
 			XSSFRow row2 = sheet.getRow((short) 1);
 			XSSFCell r2c1 = row2.getCell((short) 0);
 			r2c1.setCellValue("合同编号：" + cList.get(0).getContract_code());//此处要加控制，如果未分配任务，则不考勤
@@ -101,7 +106,8 @@ public class PoiExcel {
 				XSSFCell cellr5 = row.getCell((short) 4);
 				cellr5.setCellValue(list.get(i).getReal_endTime());
 				XSSFCell cellr6 = row.getCell((short) 5);
-				cellr6.setCellValue(list.get(i).getWorkdays());
+				int te_num = list.get(i).getEmps().size();//计算当前人物对应的人数
+				cellr6.setCellValue(list.get(i).getWorkdays()/te_num);//结果为整数
 				XSSFCell cellr7 = row.getCell((short) 6);
 				cellr7.setCellFormula("F"+(i+4)+"/SUM(F4:F"+(list.size()+4)+")");
 				XSSFCell cellr8 = row.getCell((short) 7);
@@ -162,7 +168,9 @@ public class PoiExcel {
 				XSSFSheet sheet = workbook.getSheet("任务考核表");//获取Sheet1工作表，一个excel称为工作簿，可包含多个工作表
 				XSSFRow row1 = sheet.getRow((short) 0);
 				XSSFCell r1c1 = row1.getCell((short) 0);
-				r1c1.setCellValue("合作伙伴技术服务工作任务考核-"+"2017"+"年"+"6"+"月-内部汇总");
+				int year = Calendar.getInstance().get(Calendar.YEAR);
+				int month = 1 + Calendar.getInstance().get(Calendar.MONTH);
+				r1c1.setCellValue("合作伙伴技术服务工作任务考核-"+year+"年"+month+"月-内部汇总");
 				for(int i = 0; i<list.size(); i++) {
 					XSSFRow row = sheet.getRow((short) i+2);//获取第i+3行
 					XSSFCell cellr2 = row.getCell((short) 1);//获取第2列
@@ -194,7 +202,7 @@ public class PoiExcel {
 					XSSFCell cellr15 = row.getCell((short) 14);
 					cellr15.setCellValue(list.get(i).getRemark());
 					XSSFCell cellr16 = row.getCell((short) 15);
-//					cellr16.setCellValue(list.get(i).getEmps().iterator().next().getCompany().getCname());
+//					cellr16.setCellValue(list.get(i).getEmps().iterator().next().getCompany().getCname());此处要修改一下，填充公司名
 					XSSFCell cellr17 = row.getCell((short) 16);
 					cellr17.setCellValue(list.get(i).getWorkType());
 				}
@@ -220,7 +228,7 @@ public class PoiExcel {
 				FileOutputStream out = null;
 				try {
 					out = new FileOutputStream(
-					new File(path.replace("综合室", "综合室新月份")));
+					new File(path.replace("模板", year+"年"+month+"月")));
 					workbook.write(out);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -245,7 +253,9 @@ public class PoiExcel {
 				XSSFRow row1 = sheet.getRow((short) 0);
 				XSSFCell r1c1 = row1.getCell((short) 0);
 				//最好在company表加一个别名字段
-				r1c1.setCellValue("技术服务人员明细表-" + "2017" + "年" + "6" + "月");//要改
+				int year = Calendar.getInstance().get(Calendar.YEAR);
+				int month = 1 + Calendar.getInstance().get(Calendar.MONTH);
+				r1c1.setCellValue("技术服务人员明细表-" + year + "年" + month + "月");//要改
 				for(int i = 0;i<list.size();i++) {
 					XSSFRow row = sheet.getRow((short)(2+i));
 					XSSFCell cell1 = row.getCell((short) 0);
@@ -265,7 +275,8 @@ public class PoiExcel {
 					XSSFCell cell8 = row.getCell((short) 7);
 					cell8.setCellValue(list.get(i).getPrice());//单价
 					XSSFCell cell9 = row.getCell((short) 8);
-					cell9.setCellValue(list.get(i).getTask().getWorkdays());
+					int te_num = list.get(i).getTask().getEmps().size();//计算当前人物对应的人数
+					cell9.setCellValue(list.get(i).getTask().getWorkdays()/te_num);
 					XSSFCell cell10 = row.getCell((short) 9);
 					cell10.setCellValue(0);//离岸费
 					XSSFCell cell11 = row.getCell((short) 10);
@@ -283,7 +294,7 @@ public class PoiExcel {
 				FileOutputStream out = null;
 				try {
 					out = new FileOutputStream(
-					new File(path.replace("模板", "月份")));
+					new File(path.replace("模板", year+"年"+month+"月")));
 					workbook.write(out);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -310,7 +321,9 @@ public class PoiExcel {
 			XSSFRow row1 = sheet.getRow((short) 0);
 			XSSFCell r1c1 = row1.getCell((short) 0);
 			//最好在company表加一个别名字段
-			r1c1.setCellValue("合作伙伴技术服务人员明细表-" + "2017" + "年第" + "6" + "月");//要改
+			int year = Calendar.getInstance().get(Calendar.YEAR);
+			int month = 1 + Calendar.getInstance().get(Calendar.MONTH);
+			r1c1.setCellValue("合作伙伴技术服务人员明细表-" + year + "年第" + month + "月");//要改
 			XSSFRow row2 = sheet.getRow((short) 1);
 			XSSFCell r2c1 = row2.getCell((short) 0);
 			r2c1.setCellValue("合同编号：" + cList.get(0).getContract_code());//此处要加控制，如果未分配任务，则不考勤
@@ -338,7 +351,8 @@ public class PoiExcel {
 				XSSFCell cell8 = row.getCell((short) 7);
 				cell8.setCellValue(list.get(i).getPrice());//单价
 				XSSFCell cell9 = row.getCell((short) 8);
-				cell9.setCellValue(list.get(i).getTask().getWorkdays());
+				int te_num = list.get(i).getTask().getEmps().size();//计算当前人物对应的人数
+				cell9.setCellValue(list.get(i).getTask().getWorkdays()/te_num);
 				XSSFCell cell10 = row.getCell((short) 9);
 				cell10.setCellValue(0);//离岸费
 				XSSFCell cell11 = row.getCell((short) 10);
@@ -380,7 +394,11 @@ public class PoiExcel {
 		
 	}
 	
-	
+	/**
+	 * 合同表导出
+	 * @param list
+	 * @param path
+	 */
 	public void contract(List<Object[]> list, String path) {
 		XSSFWorkbook workbook;
 		try {
@@ -389,9 +407,9 @@ public class PoiExcel {
 			for(int i=0;i<list.size();i++) {
 				Object[] ob = list.get(i);
 				
-				XSSFRow row = sheet.getRow((short)(2+i));
+				XSSFRow row = sheet.getRow((short) (2 + i));
 				XSSFCell cell1 = row.getCell((short) 0);
-				cell1.setCellValue(i+1);
+				cell1.setCellValue((double) i + 1);
 				XSSFCell cell2 = row.getCell((short) 1);
 				cell2.setCellValue(ob[0].toString());
 				XSSFCell cell3 = row.getCell((short) 2);
@@ -403,9 +421,9 @@ public class PoiExcel {
 				XSSFCell cell6 = row.getCell((short) 5);
 				cell6.setCellValue(ob[3].toString());
 				XSSFCell cell7 = row.getCell((short) 6);
-				cell7.setCellValue(ob[4].toString());
+				cell7.setCellValue(Double.parseDouble(ob[4].toString()));
 				XSSFCell cell8 = row.getCell((short) 7);
-				cell8.setCellFormula(ob[5]+"*"+1.06);
+				cell8.setCellFormula(ob[5] + "*" + 1.06);
 				XSSFCell cell9 = row.getCell((short) 8);
 				cell9.setCellValue(Double.parseDouble(ob[5].toString()));
 				XSSFCell cell10 = row.getCell((short) 9);
@@ -416,17 +434,19 @@ public class PoiExcel {
 				cell13.setCellValue("生产系统");
 				XSSFCell cell14 = row.getCell((short) 13);
 				cell14.setCellValue("测评业务线");
-				
-			}
+			}				
 				FileOutputStream out = null;
 				try {
-					out = new FileOutputStream(new File(path.replace("模板","月份")));
+					int year = Calendar.getInstance().get(Calendar.YEAR);
+					int month = 1 + Calendar.getInstance().get(Calendar.MONTH);
+					out = new FileOutputStream(new File(path.replace("模板", year + "年" + month + "月")));
 					workbook.write(out);
 				} catch (IOException e) {
 					e.printStackTrace();
 				} finally {
 					out.close();
 				}
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

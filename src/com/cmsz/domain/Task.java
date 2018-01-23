@@ -147,5 +147,4 @@ public class Task implements Serializable{
 	public void setEmps(Set<Employee> emps) {
 		this.emps = emps;
 	}
-	
 }

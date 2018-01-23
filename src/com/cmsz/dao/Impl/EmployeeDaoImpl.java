@@ -99,5 +99,4 @@ public class EmployeeDaoImpl extends HibernateDaoSupport implements EmployeeDao 
 		}
 		return list;
 	}
-
 }

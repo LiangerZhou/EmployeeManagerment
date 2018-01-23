@@ -48,8 +48,8 @@
 				<td>外援等级：</td>
 				<td><s:select list="{'低级','中级','高级'}" theme="simple"
 						name="e_level" value="%{model.e_level}" /></td>
-				<td>在职状态：</td>
-				<td><s:select list="{'是','否'}" name="on_off_duty"
+				<td>是否离岸：</td>
+				<td><s:select list="{'否','是'}" name="on_off_duty"
 						value="%{model.on_off_duty}" /></td>
 			</tr>
 			<tr>
